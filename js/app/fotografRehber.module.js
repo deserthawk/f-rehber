@@ -1,0 +1,1 @@
+var app = angular.module("fotografRehber",['ui-notification','angularSpinner','ngAnimate','ngSanitize','mgcrea.ngStrap','checklist-model']);
