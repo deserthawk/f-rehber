@@ -99,6 +99,26 @@ app.service('serverService',function($http,$window,spinnerService,$location,$tim
 		 return promise;
 	};
 	
+	this.getOneParameter = function(action, params){
+		spinnerService.startSpin();
+		var config = {
+				transformRequest: angular.identity,
+				headers : {
+					'Content-Type': 'application/json'
+				}
+		};
+//		console.log(params);
+		var promise = $http.get(action, params, config).success(function(data, status, headers, config){
+			spinnerService.stopSpin();
+			return data;
+		})
+		
+		.error(function(){
+			console.log("HATA");
+		});
+		return promise;
+	};
+	
 	var sessionExpired = function(){
 		var config = {
                 headers : {

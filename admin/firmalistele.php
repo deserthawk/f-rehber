@@ -58,6 +58,7 @@ padding-top: 10px;
 								<th>Firma Adı</th>
 								<th>Telefon</th>
 								<th>Durum</th>
+								<th>Fotoğraf Listesi</th>
 								<th>Güncelle</th>
 								<th>Listeden Kaldır</th>
 							</tr>
@@ -70,8 +71,10 @@ padding-top: 10px;
 								<td></td>
 								<td></td>
 								<td style="width: 2%;"><button type="button"
+										class="btn btn-default glyphicon glyphicon-camera"
+										data-ng-click="firmaFotoListele(row.id);"></button></td>
+								<td style="width: 2%;"><button type="button"
 										class="btn btn-default glyphicon glyphicon-edit"
-										data-toggle="modal" data-target="#firmaDetayModal"
 										data-ng-click="firmaGuncelle(row.id);"></button></td>
 								<td style="width: 2%;"><button type="button"
 										class="btn btn-danger glyphicon glyphicon-trash"

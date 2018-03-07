@@ -42,5 +42,9 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 	};
 	$scope.firmaEkleModal = function(){
 		$('#firmaEkleModal').modal('show');
-	}
+	};
+	
+	$scope.firmaFotoListele = function(value){
+		window.open("../admin/firmafotografliste.php?firmaId="+ value);
+	};
 });

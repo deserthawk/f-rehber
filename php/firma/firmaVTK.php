@@ -8,6 +8,26 @@ require_once ('../warning.php');
 
 class firmaVTK
 {
+    //eklenen sorgular start
+    function getFirmaAdiById($pId){
+        try{
+            $tempFirmaVTE = new firmaVTE();
+            
+            $pdo = connectionVT();
+            $sql = $pdo->prepare("SELECT " . $tempFirmaVTE->getFirmaAdi() . " FROM TBL_FIRMA where id=:id");
+            $sql->bindParam(":id", $pId);
+            $sql->execute();
+            $result = $sql->fetch();
+            return $result;
+        }
+        catch (PDOException $e) {
+            return "";
+        }
+    }
+    
+    
+    //eklenen sorgular end
+    
 
     function ekle($pFirmaAdi)
     {
@@ -88,7 +108,7 @@ class firmaVTK
             $pdo->rollBack();
             $warningInfo = new Warning();
             $warningInfo->setWarningId(1);
-            $warningInfo->setWarningTnm("Firma EklenememiÅŸtir.");
+            $warningInfo->setWarningTnm("Firma Eklenememiþtir.");
             return $warningInfo;
         }
     }
