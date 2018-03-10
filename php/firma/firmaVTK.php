@@ -108,7 +108,7 @@ class firmaVTK
             $pdo->rollBack();
             $warningInfo = new Warning();
             $warningInfo->setWarningId(1);
-            $warningInfo->setWarningTnm("Firma Eklenememi�tir.");
+            $warningInfo->setWarningTnm("Bir hata ile karşılaşıldı.");
             return $warningInfo;
         }
     }

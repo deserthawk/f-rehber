@@ -38,7 +38,33 @@ require_once ('../adminDahilDosyalar.html');
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class=" col-md-12 col-lg-12 ">test</div>
+								<table st-table="displayedCollection"
+									st-safe-src="rowCollection" class="table table-striped">
+									<thead>
+										<tr>
+											<th>İncele</th>
+											<th>Dosya Adı</th>
+											<th>Durum</th>
+											<th>Önizleme</th>
+											<th>Not</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="row in list track by $index"
+											ng-class="{'selected':$index == selectedRow}"
+											data-ng-click="setClickedRow($index)">
+											<td style="width: 2%;"><button type="button"
+													class="btn btn-default glyphicon glyphicon-search"
+													data-ng-click="firmaFotoListele(row.id);"></button></td>
+											<td>{{row.dosya_adi}}</td>
+											<td>{{row.fotograf_durum}}</td>
+											<td></td>
+											<td style="width: 20%;">{{row.fotograf_not}}</td>
+										</tr>
+									</tbody>
+								</table>
+
+
 							</div>
 						</div>
 					</div>
@@ -46,5 +72,6 @@ require_once ('../adminDahilDosyalar.html');
 			</div>
 		</div>
 	</div>
+	<div id="returnData"></div>
 </body>
 </html>

@@ -1,25 +1,25 @@
 <?php
 require_once ('../genelFonksiyonlar.php');
 require_once ('../vTabani/veriTabani.php');
-require_once ('sabitVTE.php');
+require_once ('galeriVTE.php');
 require_once ('../warning.php');
 
-class sabitVTK
+class galeriVTK
 {
     
-    function getSabit($pSabitKodu){
+    function getFirmaGaleriList($pFirmaId){
         
         $warningInfo = new Warning();
         
         try {
-            $tempSabitVTE = new sabitVTE();
+            $tempGaleriVTE = new galeriVTE();
             
             $pdo = connectionVT();
-            $sql = $pdo->prepare("select sabit_deger from tbl_sabit where sabit_kodu = :sabitKodu");
-            $sql->bindParam(':sabitKodu', $pSabitKodu);
+            $sql = $pdo->prepare("select id, firma_id, dosya_adi, fotograf_durum, fotograf_not from tbl_galeri where firma_id = :firmaId");
+            $sql->bindParam(':firmaId', $pFirmaId);
             $sql->execute();
             
-            $result = $sql->fetch();
+            $result = $sql->fetchAll();
             
             return $result;
         } catch (PDOException $e) {
