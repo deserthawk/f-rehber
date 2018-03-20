@@ -5,16 +5,66 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 	};
 	var frmAdiGetir = function(firmaId){
 		serverService.getOneParameter("../php/firma/firmaG.php?pGetId=1501&pId="+firmaId).then(function(payload){
-			//$('#returnData').html(payload.data);
 			$scope.firmaAdi=payload.data.firma_adi;
 		});
 	};
 	var getFirmaFotografList = function(firmaId){
 		serverService.sendGetJson("../php/galeri/galeriG.php?pGetId=1501&pFirmaId="+firmaId).then(function(payload){
-			//$('#returnData').html(payload.data);
-			//$scope.firmaAdi=payload.data.firma_adi;
 			$scope.list=payload.data;
-			//console.log(payload.data);
 		});
 	};
+	var getFotografEtiketList = function(id){
+		serverService.sendGetJson("../php/galeri/galeriG.php?pGetId=1511&pId="+id).then(function(payload){
+			//$('#returnData').html(payload.data);
+			//$scope.firmaAdi=payload.data.firma_adi;
+			//$scope.list=payload.data;
+			//console.log(payload.data);
+			$scope.etiketList = payload.data; 
+		});
+	};
+	
+	$scope.getEtiketList = function(){
+		etiketList();
+	};
+	
+	var etiketList = function(){
+		serverService.getComboList("../php/gnlDegerKumesi/gnlDegerKumesiComboList.php?degerKodu=GLR_ETK").then(function(payload){
+			$scope.etiketDegerList=payload.data;
+		});
+	}; 
+	$scope.fotografTanimlama = function(id,pBDosya){
+		$("#fotografTanimlaFormImg").attr("src",pBDosya);
+		$('#fotografTanimlamaModal').modal('show');
+		$("#fotografTanimlaFormId").val(id);
+		getFotografEtiketList(id);
+	};
+	$scope.fotografEtiketEkle = function(){
+		etiketId = $("#etiketGuncelle").val();
+		fotografId = $("#fotografTanimlaFormId").val();
+		serverService.sendGetJson("../php/galeriEtiket/galeriEtiketG.php?pGetId=1501&pEtiketId="+etiketId+"&pFotografId="+fotografId).then(function(payload){
+			console.log(payload.data);
+			if(payload.data.warningId == 0){
+				notificationService.success(payload.data.warningTnm);
+				getFotografEtiketList($("#fotografTanimlaFormId").val());
+			}
+			else{
+				notificationService.error(payload.data.warningTnm);
+			}
+			$('#returnData').html(payload.data);
+		});
+		//alert($("#etiketGuncelle").val());
+	};
+	$scope.fotografEtiketSil = function(id){
+		serverService.sendGetJson("../php/galeriEtiket/galeriEtiketG.php?pGetId=1511&pId="+id).then(function(payload){
+			console.log(payload.data);
+			if(payload.data.warningId == 0){
+				notificationService.success(payload.data.warningTnm);
+				getFotografEtiketList($("#fotografTanimlaFormId").val());
+			}
+			else{
+				notificationService.error(payload.data.warningTnm);
+			}
+			$('#returnData').html(payload.data);
+		});
+	}
 });

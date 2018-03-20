@@ -17,7 +17,7 @@ require_once ('../adminDahilDosyalar.html');
 }
 
 .heightModal {
-	height: 300px;
+	height: 700px;
 }
 
 .padding-top10 {
@@ -28,7 +28,7 @@ require_once ('../adminDahilDosyalar.html');
 </head>
 <body data-ng-app="fotografRehber">
 	<div data-ng-controller="firmaListeleCtrl"
-		data-ng-init="firmaDetayGetir(<?php echo ($_GET["firmaId"]); ?>);">
+		data-ng-init="firmaDetayGetir(<?php echo ($_GET["firmaId"]); ?>);getEtiketList();">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  toppad">
@@ -55,22 +55,63 @@ require_once ('../adminDahilDosyalar.html');
 											data-ng-click="setClickedRow($index)">
 											<td style="width: 2%;"><button type="button"
 													class="btn btn-default glyphicon glyphicon-search"
-													data-ng-click="firmaFotoListele(row.id);"></button></td>
+													data-ng-click="fotografTanimlama(row.id,row.b_dosya_adi);"></button></td>
 											<td>{{row.dosya_adi}}</td>
-											<td>{{row.fotograf_durum}}</td>
-											<td></td>
+											<td>{{row.fotograf_durum_tnm}}</td>
+											<td><img  src="{{row.k_dosya_adi}}" height="50px" ></td>
 											<td style="width: 20%;">{{row.fotograf_not}}</td>
 										</tr>
 									</tbody>
 								</table>
-
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- FOTOGRAF TANIMLAMA START -->
+		<modal modal-name="fotografTanimlamaModal" modal-class="modal-dialog modal-lg"> 
+			<modal-header>Fotoğraf Tanımlama</modal-header> 
+    			<modal-body modal-class="heightModal">
+    				<form id="fotografTanimlaForm" name="fotografTanimlaForm" method="post">
+    					<input type="hidden" id="fotografTanimlaFormTipId" name="fotografTanimlaFormTipId" value="1511">
+    					<input type="hidden" id="fotografTanimlaFormId" name="fotografTanimlaFormId">
+    					<input type="hidden" id="fotografTanimlaFormFirmaId" name="fotografTanimlaFormFirmaId">
+            			<div class="form-inline col-sm-12">
+                			<div class="col-sm-12">
+                        		<div class="form-group">
+                        			<div class="form-inline">
+                        				<img id="fotografTanimlaFormImg" src="" height="555px">
+                        			</div>
+                        		</div>
+                        	</div>
+                    	</div>
+                    	<div class="form-inline col-sm-12">
+                    	<ul class="tags">
+										<li ng-repeat="etiket in etiketList track by $index"><a href="#" data-ng-click="fotografEtiketSil(etiket.id)"> {{etiket.deger}}</a>
+										
+										</li>
+						</ul>
+						</div>
+						<div class="form-inline col-sm-12 form-padding">
+						<legend>Fotoğraf Etiket İşlemi</legend>
+                        			<select data-ng-model="etiketGuncelle" class="form-control"
+    								name="etiketGuncelle" id="etiketGuncelle">
+    									<option value="">Seçiniz...</option>
+    									<option ng-repeat="etiketLer in etiketDegerList" value="{{etiketLer.ID}}">{{etiketLer.DEGER}}</option>
+    							</select>
+    							<button type="button"
+													class="btn btn-default"
+													data-ng-click="fotografEtiketEkle();">Ekle</button>
+                        </div>
+                	</form>
+            	</modal-body> 
+            <modal-footer kapat-icerik="Kapat">
+        		<button type="submit" class="btn btn-success"
+        			data-ng-click="iletisimGuncelle('iletisimGuncelleForm');">Güncelle</button>
+    		</modal-footer> 
+		</modal>
+		<!-- FOTOGRAF TANIMLAMA END -->
 	</div>
 	<div id="returnData"></div>
 </body>
