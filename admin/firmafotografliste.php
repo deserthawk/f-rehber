@@ -17,7 +17,7 @@ require_once ('../adminDahilDosyalar.html');
 }
 
 .heightModal {
-	height: 700px;
+	height: 870px;
 }
 
 .padding-top10 {
@@ -28,7 +28,7 @@ require_once ('../adminDahilDosyalar.html');
 </head>
 <body data-ng-app="fotografRehber">
 	<div data-ng-controller="firmaListeleCtrl"
-		data-ng-init="firmaDetayGetir(<?php echo ($_GET["firmaId"]); ?>);getEtiketList();">
+		data-ng-init="firmaDetayGetir(<?php echo ($_GET["firmaId"]); ?>);getEtiketList();getOnayList();">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  toppad">
@@ -55,7 +55,7 @@ require_once ('../adminDahilDosyalar.html');
 											data-ng-click="setClickedRow($index)">
 											<td style="width: 2%;"><button type="button"
 													class="btn btn-default glyphicon glyphicon-search"
-													data-ng-click="fotografTanimlama(row.id,row.b_dosya_adi);"></button></td>
+													data-ng-click="fotografTanimlama(row.id,row.b_dosya_adi,row.fotograf_durum,row.fotograf_not);"></button></td>
 											<td>{{row.dosya_adi}}</td>
 											<td>{{row.fotograf_durum_tnm}}</td>
 											<td><img  src="{{row.k_dosya_adi}}" height="50px" ></td>
@@ -104,7 +104,21 @@ require_once ('../adminDahilDosyalar.html');
 													class="btn btn-default"
 													data-ng-click="fotografEtiketEkle();">Ekle</button>
                         </div>
-                	</form>
+            			<div class="form-inline col-sm-12 form-padding">
+            			<legend>Fotoğraf Onay İşlemi</legend>
+            			<label>Not</label>
+            			<textarea rows="4" cols="50" id="fotografTanimlaFormNot">
+            			</textarea>
+            			</div>
+            			<div class="form-inline col-sm-12 form-padding">
+            				
+            				<select data-ng-model="onayGuncelle" class="form-control"
+            					name="onayGuncelle" id="onayGuncelle">
+            					<option value="">Seçiniz...</option>
+            					<option ng-repeat="onayLar in onayList" value="{{onayLar.ID}}">{{onayLar.DEGER}}</option>
+            				</select>
+            			</div>
+		</form>
             	</modal-body> 
             <modal-footer kapat-icerik="Kapat">
         		<button type="submit" class="btn btn-success"

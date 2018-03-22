@@ -31,11 +31,22 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 		serverService.getComboList("../php/gnlDegerKumesi/gnlDegerKumesiComboList.php?degerKodu=GLR_ETK").then(function(payload){
 			$scope.etiketDegerList=payload.data;
 		});
-	}; 
-	$scope.fotografTanimlama = function(id,pBDosya){
+	};
+	$scope.getOnayList = function(){
+		onayList();
+	};
+	var onayList = function(){
+		serverService.getComboList("../php/gnlDegerKumesi/gnlDegerKumesiComboList.php?degerKodu=FT_DRM").then(function(payload){
+			$scope.onayList=payload.data;
+		});
+	};
+	
+	$scope.fotografTanimlama = function(id,pBDosya, pFotografDurum,pFotografNot){
 		$("#fotografTanimlaFormImg").attr("src",pBDosya);
 		$('#fotografTanimlamaModal').modal('show');
 		$("#fotografTanimlaFormId").val(id);
+		$("#onayGuncelle").val(pFotografDurum);
+		$("#fotografTanimlaFormNot").val(pFotografNot);
 		getFotografEtiketList(id);
 	};
 	$scope.fotografEtiketEkle = function(){
