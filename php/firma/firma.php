@@ -5,7 +5,7 @@ require_once ('firmaVTK.php');
 
 $returnArry = array();
 $formFlag;
-$rootPath = "D:/wamp64/www/fotoRehber/img";
+$rootPath = "D:/wamp64/www/f-rehber/img";
 
 if(isset($_POST['durumGuncelleFormTipId'])){
     $formFlag = $_POST['durumGuncelleFormTipId'];

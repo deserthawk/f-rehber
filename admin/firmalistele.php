@@ -23,6 +23,9 @@ padding-top: 10px;
 </style>
 <title></title>
 </head>
+<?php 
+session_start();
+?>
 <body data-ng-app="fotografRehber">
 	<div data-ng-controller="firmaListeleCtrl"
 		data-ng-init="firmaListGetir();sehirList();">

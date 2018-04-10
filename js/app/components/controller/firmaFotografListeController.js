@@ -1,4 +1,5 @@
 app.controller('firmaListeleCtrl', function($scope, serverService,notificationService) {
+	$scope.myFile;
 	$scope.firmaDetayGetir = function(firmaId){
 		frmAdiGetir(firmaId);
 		getFirmaFotografList(firmaId);
@@ -41,10 +42,11 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 		});
 	};
 	
-	$scope.fotografTanimlama = function(id,pBDosya, pFotografDurum,pFotografNot){
+	$scope.fotografTanimlama = function(id,pBDosya, pFotografDurum,pFotografNot,pFirmaId){
 		$("#fotografTanimlaFormImg").attr("src",pBDosya);
 		$('#fotografTanimlamaModal').modal('show');
 		$("#fotografTanimlaFormId").val(id);
+		$("#fotografTanimlaFormFirmaId").val(pFirmaId);
 		$("#onayGuncelle").val(pFotografDurum);
 		$("#fotografTanimlaFormNot").val(pFotografNot);
 		getFotografEtiketList(id);
@@ -77,5 +79,56 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 			}
 			$('#returnData').html(payload.data);
 		});
-	}
+	};
+	$scope.fotografGuncelle = function(){
+		$("#fotografTanimlaFormNotHidden").val($('textarea#fotografTanimlaFormNot').val());
+		var formData = $("#fotografTanimlaForm").serializeArray();
+		var fd = new FormData();
+		for(i=0;i<formData.length;i++){
+	    	fd.append(formData[i].name,formData[i].value);
+	    	console.log("name: " + formData[i].name + "value: " + formData[i].value);
+	    }
+		
+		serverService.sendFormDataObject("../php/galeri/galeriP.php",fd).then(function(payload){
+				console.log(payload.data);
+				console.log(payload.data[0]);
+				if(payload.data[0].warningId == 0){
+					notificationService.success(payload.data[0].warningTnm);
+					getFirmaFotografList($("#fotografTanimlaFormFirmaId").val());
+				}
+				else{
+					notificationService.error1(payload.data[0].warningTnm);
+				}
+			});
+		
+		
+	};
+	$scope.fotografYukleModal = function(){
+		$('#fotografYukleModal').modal('show');
+	};
+	$scope.fotografYukle = function(){
+		var formData = $("#fotografYukleForm").serializeArray();
+		var fd = new FormData();
+		var file = $scope.myFile;
+		debugger;
+		fd.append('fileToUpload',file);
+		for(i=0;i<formData.length;i++){
+	    	fd.append(formData[i].name,formData[i].value);
+	    	console.log("name: " +formData[i].name + " value: " + formData[i].value);
+	    }
+		
+		serverService.sendFormDataObject("../php/galeri/galeriP.php",fd).then(function(payload){
+			console.log(payload.data);
+			if(payload.data[0].warningId == 0){
+				notificationService.success(payload.data[0].warningTnm);
+			}
+			else{
+				notificationService.error1(payload.data[0].warningTnm);
+			}
+		$('#returnData').html(payload.data);
+		});
+	};
+	
+	
+	
 });

@@ -3,7 +3,7 @@ app.directive('fileModel', ['$parse', function ($parse) {
        restrict: 'A',
        link: function(scope, element, attrs) {
           var model = $parse(attrs.fileModel);
-      //    console.log(model);
+       //   console.log(model);
           var modelSetter = model.assign;
       //    console.log(modelSetter);
           
