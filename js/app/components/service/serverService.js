@@ -188,7 +188,7 @@ app.service('serverService',function($http,$window,spinnerService,$location,$tim
 	};
 	
 	this.redirect = function(directURL){
-		$window.location.href = directURL + ".action?t=" + (new Date()).getTime();//cacheten getirmesin diye zaman parametresi gönderiyoruz.
+		$window.location.href = directURL + ".php?t=" + (new Date()).getTime();//cacheten getirmesin diye zaman parametresi gönderiyoruz.
 	};
 	
 	this.popupWindow = function(popupURL, pExtraParams, pWidth = 100, pHeight = 100){

@@ -3,9 +3,12 @@
 <head>
 <?php
 require_once ('../adminDahilDosyalar.html');
+require_once ('kullaniciKontrol.php');
 ?>
 <script type="text/javascript"
 	src="../js/app/components/controller/firmaListeleController.js"></script>
+<script type="text/javascript"
+	src="../js/app/components/controller/adminNavBarController.js"></script>
 	
 <style>
 .tableform label{
@@ -21,12 +24,10 @@ height:300px;
 padding-top: 10px;
 }
 </style>
-<title></title>
+<title>Fotoğrafçı Listesi</title>
 </head>
-<?php 
-session_start();
-?>
 <body data-ng-app="fotografRehber">
+<admin-nav-bar></admin-nav-bar>
 	<div data-ng-controller="firmaListeleCtrl"
 		data-ng-init="firmaListGetir();sehirList();">
 		<section>

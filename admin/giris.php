@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
 <?php
 require_once ('../adminDahilDosyalar.html');
 ?>
@@ -68,7 +69,7 @@ $_SESSION["sessionId"] = session_id ();
 <body data-ng-app="fotografRehber">
 	<div class="container" data-ng-controller="girisCtrl">
 		<div class="row bs">
-			<form id="giris" name="giris">
+			<form id="girisAdminForm" name="girisAdminForm">
 			<input type="hidden" id="pGirisId" name="pGirisId" value="1501">
 				<div class="row bc loginHeader pl-0 pt-0 pb-0">
 					<div class="col-md-6 col-xs-12">Admin Girişi</div>
@@ -76,11 +77,11 @@ $_SESSION["sessionId"] = session_id ();
 				<div class="row">
 					<div class="col-md-6 col-xs-6 pt-0 pl-1">Kullanıcı Adı:</div>
 					<div class="col-md-6 col-xs-6 pt-0 pr-1">
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" name="girisKullaniciAdi">
 					</div>
 					<div class="col-md-6 col-xs-6 pt-0 pb-0 pl-1">Şifre:</div>
 					<div class="col-md-6 col-xs-6 pt-0 pb-0 pr-1">
-						<input type="password" class="form-control">
+						<input type="password" class="form-control" name="girisSifre">
 					</div>
 				</div>
 				<div class="row pl-2 pb-0">
@@ -90,6 +91,9 @@ $_SESSION["sessionId"] = session_id ();
 					</div>
 				</div>
 			</form>
+		</div>
+		<div class="row">
+		<div id="returnData"></div>
 		</div>
 	</div>
 </body>

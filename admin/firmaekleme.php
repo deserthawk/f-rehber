@@ -4,6 +4,7 @@
 
 <?php
 require_once ('../adminDahilDosyalar.html');
+require_once ('kullaniciKontrol.php');
 ?>
 <script type="text/javascript" src="../js/app/components/controller/firmaeklemeController.js"></script>
 <title></title>
