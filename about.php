@@ -70,7 +70,7 @@
                 <div class="col-sm-5 col-sm-pull-7 g-hor-centered-row__col g-text-left--xs g-text-right--md">
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">MİSYONUMUZ</p>
                     <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Misyonumuz</h2>
-                    <p class="g-font-size-18--sm">Düğün fotoğrafçınızı bulmak isteyen, büyük günlerini planlayan çiftleri fotoğrafçılarıyla buluşturmak.</p>
+                    <p class="g-font-size-18--sm">Düğün fotoğrafçısını bulmak isteyen, büyük günlerini planlayan çiftleri fotoğrafçılarıyla buluşturmak.</p>
                 </div>
             </div>
             
@@ -89,7 +89,7 @@
                 <div class="col-sm-5 g-hor-centered-row__col">
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">VİZYONUMUZ</p>
                     <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Vizyonumuz</h2>
-                    <p class="g-font-size-18--sm">Tarzınıza ve bütçenize uygun fotoğrafçıyı bulmanızı kolaylaştırmak ve ilham vermek.</p>
+                    <p class="g-font-size-18--sm">Tarzınıza ve bütçenize uyan fotoğrafçıyı bulmanızı sağlamak.</p>
                 </div>
             </div>
             
@@ -100,8 +100,8 @@
         <div class="g-bg-color--primary-ltr">
             <div class="container g-padding-y-80--xs g-padding-y-125--sm">
                 <div class="g-text-center--xs g-margin-b-100--xs">
-                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2 g-margin-b-25--xs">Ä°Å�LEM</p>
-                    <h2 class="g-font-size-32--xs g-font-size-36--md g-color--white">NasÄ±l Ã‡alÄ±ÅŸÄ±r?</h2>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2 g-margin-b-25--xs">İŞLEM</p>
+                    <h2 class="g-font-size-32--xs g-font-size-36--md g-color--white">Nasıl Çalışır?</h2>
                 </div>
                 <ul class="list-inline row g-margin-b-100--xs">
                     <!-- Process -->
@@ -111,8 +111,8 @@
                                 <span class="g-display-inline-block--xs g-width-100--xs g-height-100--xs g-font-size-38--xs g-color--primary g-bg-color--white g-box-shadow__dark-lightest-v4 g-padding-x-20--xs g-padding-y-20--xs g-radius--circle">01</span>
                             </div>
                             <div class="g-padding-x-20--xs">
-                                <h3 class="g-font-size-18--xs g-color--white">KayÄ±t</h3>
-                                <p class="g-color--white-opacity">FotoÄŸrafÃ§Ä± olarak kayÄ±t yaptÄ±rÄ±n.</p>
+                                <h3 class="g-font-size-18--xs g-color--white">Kayıt</h3>
+                                <p class="g-color--white-opacity">Fotoğrafçı olarak kayıt yaptırın.</p>
                             </div>
                         </div>
                     </li>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="g-padding-x-20--xs">
                                 <h3 class="g-font-size-18--xs g-color--white">Onay</h3>
-                                <p class="g-color--white-opacity">FirmanÄ±z yetkili kullanÄ±cÄ±larÄ±mÄ±z tarafÄ±ndan onaylanÄ±r.</p>
+                                <p class="g-color--white-opacity">Firmanız yetkili kullanıcılarımız tarafından onaylanır.</p>
                             </div>
                         </div>
                     </li>
@@ -139,8 +139,8 @@
                                 <span class="g-display-inline-block--xs g-width-100--xs g-height-100--xs g-font-size-38--xs g-color--primary g-bg-color--white g-box-shadow__dark-lightest-v4 g-padding-x-20--xs g-padding-y-20--xs g-radius--circle">03</span>
                             </div>
                             <div class="g-padding-x-20--xs">
-                                <h3 class="g-font-size-18--xs g-color--white">Profil DÃ¼zenleyin</h3>
-                                <p class="g-color--white-opacity"> KiÅŸisel bilgilerinizi dÃ¼zenleyin.</p>
+                                <h3 class="g-font-size-18--xs g-color--white">Profil Düzenleyin</h3>
+                                <p class="g-color--white-opacity"> Firma bilgilerinizi düzenleyin.</p>
                             </div>
                         </div>
                     </li>
@@ -153,8 +153,8 @@
                                 <span class="g-display-inline-block--xs g-width-100--xs g-height-100--xs g-font-size-38--xs g-color--primary g-bg-color--white g-box-shadow__dark-lightest-v4 g-padding-x-20--xs g-padding-y-20--xs g-radius--circle">04</span>
                             </div>
                             <div class="g-padding-x-20--xs">
-                                <h3 class="g-font-size-18--xs g-color--white">Galeri OluÅŸturun</h3>
-                                <p class="g-color--white-opacity">En beÄŸendiÄŸiniz fotoÄŸraflarÄ±nÄ±zÄ± uygulamaya yÃ¼kleyin.</p>
+                                <h3 class="g-font-size-18--xs g-color--white">Galeri Oluşturun</h3>
+                                <p class="g-color--white-opacity">En beğendiğiniz fotoğraflarınızı yükleyin.</p>
                             </div>
                         </div>
                     </li>

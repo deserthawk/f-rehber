@@ -29,6 +29,9 @@ if ($formFlag == 1511) {
 if($formFlag == 1512 ){
     $tempFirmaModel->setId($_POST['logoGuncelleFirmaId']);
     move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $rootPath . '/firma/logo/'. $tempFirmaModel->getId(). '.png');
+    $returnArry[] = $tempFirmaVTK->firmaLogoGuncelle($tempFirmaModel->getId(),$tempFirmaModel->getId(). '.png');
+ 
+    die(json_encode($returnArry, JSON_UNESCAPED_UNICODE));
 }
 
 

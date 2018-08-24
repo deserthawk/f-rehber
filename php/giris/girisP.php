@@ -11,7 +11,10 @@ $tempKullaniciAdminSessionVTK = new kullaniciAdminSessionVTK();
 if(isset($_POST['pGirisId'])){
     $localPostId = $_POST['pGirisId'];
 }
-
+/**
+ * kullanici girisi icin kullaniciAdi ve sifre kontrolu yapilir.
+ * adminKullanici session parametresi olarak set edilir.
+ */
 if($localPostId==1501){
 //    print_r($tempKullaniciAdminVTK->getKullaniciVar($_POST['girisKullaniciAdi'], $_POST['girisSifre']));
     $warningInfo = $tempKullaniciAdminVTK->getKullaniciVar($_POST['girisKullaniciAdi'], $_POST['girisSifre']);

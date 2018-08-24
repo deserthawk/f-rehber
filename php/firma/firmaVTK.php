@@ -187,7 +187,8 @@ class firmaVTK
         }
     }
     
-    function firmaNotGuncelle($pId, $pFirmaDurum, $pFirmaNot){
+    function firmaNotGuncelle($pId, $pFirmaDurum, $pFirmaNot)
+    {
         $warningInfo = new Warning();
         try {
             $aliciIpAdres = get_client_ip_env();
@@ -212,17 +213,99 @@ class firmaVTK
             $warningInfo->setWarningId(0);
             $warningInfo->setWarningTnm("Güncelleme işlemi başarıyla tamamlandı.");
             return $warningInfo;
-            
-            
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             $pdo->rollBack();
             $warningInfo = new Warning();
             $warningInfo->setWarningId(1);
             $warningInfo->setWarningTnm("Firma Güncellenemedi.");
             return $warningInfo;
-        
-        
+        }
     }
+    
+    function firmaLogoGuncelle($pId, $pFirmaLogo)
+    {
+        $warningInfo = new Warning();
+        try {
+            $aliciIpAdres = get_client_ip_env();
+            $buGun = gecerli_tarih_saat();
+            
+            $tempFirmaVTE = new firmaVTE();
+            
+            $sql = "UPDATE tbl_firma SET firma_logo=:firmaLogo,guncelleme_ip=:guncellemeIp,guncelleme_tarihi=:guncellemeTarihi WHERE id=:id";
+            
+            $pdo = connectionVT();
+            $stmt = $pdo->prepare($sql);
+            
+            $stmt->bindParam(':firmaLogo', $pFirmaLogo);
+            $stmt->bindParam(':guncellemeIp', $aliciIpAdres);
+            $stmt->bindParam(':guncellemeTarihi', $buGun);
+            
+            $stmt->bindParam(':id', $pId);
+            
+            $stmt->execute();
+            
+            $warningInfo->setWarningId(0);
+            $warningInfo->setWarningTnm("Güncelleme işlemi başarıyla tamamlandı.");
+            return $warningInfo;
+        } catch (PDOException $e) {
+            $pdo->rollBack();
+            $warningInfo = new Warning();
+            $warningInfo->setWarningId(1);
+            $warningInfo->setWarningTnm("Firma Güncellenemedi.");
+            return $warningInfo;
+        }
+    }
+    
+    function getFirmaMainList($pfirmaAdi,$pil,$pmin,$pmax){
+        $warningInfo = new Warning();
+        $sonuc =array();
+        try{
+            $tempFirmaVTE = new firmaVTE();
+            
+            $pdo = connectionVT();
+            $sqlString = "SELECT T.id,T.firma_adi,T.firma_logo FROM
+                    (SELECT TBL_FIRMA.id,
+                        firma_adi ,
+                        IFNULL(TBL_FIRMA.firma_logo, 'camera-512.png') firma_logo,
+                        tbl_firma_iletisim.deger1
+                       FROM TBL_FIRMA
+                            LEFT JOIN tbl_firma_iletisim ON tbl_firma_iletisim.iletisim_tip = 1 AND tbl_firma_iletisim.firma_id = TBL_FIRMA.id) T
+                                where 1=1
+                                and T.firma_adi like :firmaAdi";
+            //il degeri varsa sorguya eklenir.
+            if($pil!=null){
+                 $sqlString=$sqlString." and T.deger1 = :il ";
+            }
+            $sqlString=$sqlString." Limit :min,:max";
+            
+            $sql = $pdo->prepare($sqlString);
+            $tempFirmaAdi = '%' . $pfirmaAdi . '%';
+            
+            //il degeri varsa deger bind edilir.
+            if($pil!=null){
+                $sql->bindParam(':il', $pil , PDO::PARAM_STR);
+            }
+            
+            $min = $pmin;
+            $max = $pmax;
+            $sql->bindParam(':min', $min ,PDO::PARAM_INT );
+            $sql->bindParam(':max', $max ,PDO::PARAM_INT );
+            $sql->bindParam(':firmaAdi', $tempFirmaAdi , PDO::PARAM_STR);
+            $sql->execute();
+            $result = $sql->fetchAll();
+            $warningInfo->setWarningId(0);
+            $sonuc[] = $warningInfo;
+            $sonuc[] = $result;
+            
+            return $sonuc;
+            
+        }
+        catch (PDOException $e) {
+            $warningInfo->setWarningId(1);
+            $warningInfo->setWarningTnm($e->getMessage() . ' ' . $sqlString . ' il:'. $pil . ' min:' .$min . ' max:' . $max . ' firma adi:' . $tempFirmaAdi);
+            $sonuc[] =$warningInfo;
+            return $sonuc;
+        }
     }
     
 }

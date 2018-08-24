@@ -63,6 +63,30 @@ class firmaIletisimVTK
         }
         
     }
+    
+    function getFirmaAdresText($pFirmaId){
+        $warningInfo = new Warning();
+        try {
+            $tempFirmaIletisimVTE = new firmaIletisimVTE();
+            
+            $pdo = connectionVT();
+            $sql = $pdo->prepare("select concat(tt.deger3,' ', ilce.deger, '/', il.deger) adres from tbl_firma_iletisim tt 
+                        left join  tbl_gnl_deger_kumesi il on tt.deger1 = il.id
+                        left join tbl_gnl_deger_kumesi ilce on tt.deger2 = ilce.id where tt.iletisim_tip = 1 and tt.firma_id = :firmaId");
+            $sql->bindParam(':firmaId', $pFirmaId);
+            $sql->execute();
+            
+            $result = $sql->fetch();
+            
+            return $result;
+        } catch (PDOException $e) {
+            $pdo->rollBack();
+            $warningInfo = new Warning();
+            $warningInfo->setWarningId(1);
+            $warningInfo->setWarningTnm("Firma Eklenememiştir.");
+            return $warningInfo;
+        }
+    }
 
     function ekle($pFirmaId, $pIletisimTip, $pDeger1, $pDeger2, $pDeger3, $pDeger4, $pDeger5, $pDeger6, $pDeger7, $pDeger8, $pDeger9, $pDeger10)
     {
