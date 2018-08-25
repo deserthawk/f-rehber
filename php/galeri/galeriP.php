@@ -3,7 +3,10 @@ require_once ('../genelPostKontrol.php');
 require_once ('galeriModel.php');
 require_once ('galeriVTK.php');
 $tempGaleriVTK = new galeriVTK();
-$rootPath = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR. "f-rehber". DIRECTORY_SEPARATOR . "img";
+$tempPath = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR. "f-rehber". DIRECTORY_SEPARATOR . "img";
+$rootPath = str_replace("\\", DIRECTORY_SEPARATOR , $tempPath);
+
+
 
 $returnArry = array();
 $formFlag;
