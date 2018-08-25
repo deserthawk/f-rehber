@@ -4,7 +4,7 @@ require_once ('galeriModel.php');
 require_once ('galeriVTK.php');
 $tempGaleriVTK = new galeriVTK();
 $tempPath = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR. "f-rehber". DIRECTORY_SEPARATOR . "img";
-$rootPath = str_replace("\\", DIRECTORY_SEPARATOR , $tempPath);
+$rootPath = str_replace("/", DIRECTORY_SEPARATOR , $tempPath);
 
 
 
