@@ -3,7 +3,7 @@ require_once ('../genelPostKontrol.php');
 require_once ('galeriModel.php');
 require_once ('galeriVTK.php');
 $tempGaleriVTK = new galeriVTK();
-$rootPath = "D:/wamp64/www/f-rehber/img";
+$rootPath = $_SERVER['DOCUMENT_ROOT'] . "/f-rehber/img";
 
 $returnArry = array();
 $formFlag;

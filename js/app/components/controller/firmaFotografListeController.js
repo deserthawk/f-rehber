@@ -110,7 +110,6 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 		var formData = $("#fotografYukleForm").serializeArray();
 		var fd = new FormData();
 		var file = $scope.myFile;
-		debugger;
 		fd.append('fileToUpload',file);
 		for(i=0;i<formData.length;i++){
 	    	fd.append(formData[i].name,formData[i].value);
