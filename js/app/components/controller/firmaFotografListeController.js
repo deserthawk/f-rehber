@@ -99,9 +99,7 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 				else{
 					notificationService.error1(payload.data[0].warningTnm);
 				}
-			});
-		
-		
+			});		
 	};
 	$scope.fotografYukleModal = function(){
 		$('#fotografYukleModal').modal('show');
@@ -125,6 +123,20 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 				notificationService.error1(payload.data[0].warningTnm);
 			}
 		$('#returnData').html(payload.data);
+		});
+	};
+	
+	$scope.fotografSil = function(value,firmaId){
+		serverService.sendGetJson("../php/galeri/galeriG.php?pGetId=1521&pId="+value).then(function(payload){
+			console.log(payload.data);
+			if(payload.data.warningId == 0){
+				notificationService.success(payload.data.warningTnm);
+				getFirmaFotografList(firmaId);
+			}
+			else{
+				notificationService.error(payload.data.warningTnm);
+			}
+			$('#returnData').html(payload.data);
 		});
 	};
 	

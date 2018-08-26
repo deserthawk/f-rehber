@@ -3,9 +3,36 @@ require_once ('../genelFonksiyonlar.php');
 require_once ('../vTabani/veriTabani.php');
 require_once ('galeriVTE.php');
 require_once ('../warning.php');
+require_once ('../galeriEtiket/galeriEtiketVTK.php');
+require_once ('../sabit/sabitVTK.php');
 
 class galeriVTK
 {
+    
+    function getDosyaAdi($pFotografId){
+        
+        $warningInfo = new Warning();
+        
+        try {
+            $tempSabitVTE = new sabitVTE();
+            
+            $pdo = connectionVT();
+            $sql = $pdo->prepare("select dosya_adi from tbl_galeri where id = :id");
+            $sql->bindParam(':id', $pFotografId);
+            $sql->execute();
+            
+            $result = $sql->fetch();
+            
+            return $result;
+        } catch (PDOException $e) {
+            //to_do log tablosuna veri yazılır.
+            
+            $warningInfo->setWarningId(1);
+            $warningInfo->setWarningTnm("Veri tabanı hatası alındı.");
+            return $warningInfo;
+        }
+        
+    }
 
     function getFirmaGaleriList($pFirmaId)
     {
@@ -146,6 +173,80 @@ class galeriVTK
             $warningInfo->setWarningTnm($e->getMessage());
             return $warningInfo;
         }   
+    }
+    
+    function sil($pGaleriId){
+        try{
+            $warningInfo = new Warning();
+            
+            $sql="DELETE FROM tbl_galeri WHERE id=:id";
+            
+            $pdo = connectionVT();
+            $stmt = $pdo->prepare($sql);
+            
+            $stmt->bindParam(':id', $pGaleriId);
+            $stmt->execute();
+            
+            $warningInfo->setWarningId(0);
+            $warningInfo->setWarningTnm("Fotoğraf silindi.");
+            
+            return $warningInfo;
+        }
+        catch (PDOException $e) {
+            //to_do log tablosuna veri yazılır.
+            
+            $warningInfo->setWarningId(1);
+            $warningInfo->setWarningTnm("Veri tabanı hatası alındı.");
+            return $warningInfo;
+        }
+    }
+    
+    function firmaFotografSil($pFotografId){
+        $warningInfo = new Warning();
+        
+        try{
+            //fotografa ait etiketler silinir.
+            $tempGaleriEtiketVTK = new galeriEtiketVTK();
+            $warningInfo = $tempGaleriEtiketVTK->fotografEtiketSil($pFotografId);            
+            if($warningInfo->getWarningId()!=0){
+                return $warningInfo;
+            }
+            
+            //fotograf satiri silinir.
+            $dosyaAdi = $this->getDosyaAdi($pFotografId);
+            
+            $warningInfo = $this->sil($pFotografId);
+            if($warningInfo->getWarningId()!=0){
+                return $warningInfo;
+            }
+            
+            //fotograf bf klasor yolundan silinir.
+            $tempSabitVTK = new sabitVTK();
+            $bfPath = $tempSabitVTK->getSabit("ADM_REAL_B_PATH");
+            if(!unlink($bfPath[0].$dosyaAdi[0])){
+                $warningInfo->setWarningId(1);
+                $warningInfo->setWarningTnm("Bir hata alındı.");
+                return $warningInfo;
+            }
+            //fotograf kf klasor yolundan silinir.
+            $kfPath = $tempSabitVTK->getSabit("ADM_REAL_K_PATH");
+            if(!unlink($kfPath[0].$dosyaAdi[0])){
+                $warningInfo->setWarningId(1);
+                $warningInfo->setWarningTnm("Bir hata alındı.");
+                return $warningInfo;
+            }
+            
+            $warningInfo->setWarningId(0);
+            $warningInfo->setWarningTnm("Fotoğraf Silindi.");
+            return $warningInfo;
+        }
+        catch (PDOException $e) {
+            //to_do log tablosuna veri yazılır.
+            
+            $warningInfo->setWarningId(1);
+            $warningInfo->setWarningTnm("Veri tabanı hatası alındı.");
+            return $warningInfo;
+        }
     }
     
     

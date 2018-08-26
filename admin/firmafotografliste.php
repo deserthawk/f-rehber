@@ -56,6 +56,7 @@ require_once ('kullaniciKontrol.php');
 											<th>Durum</th>
 											<th>Önizleme</th>
 											<th>Not</th>
+											<th style="width: 1%; text-align: center;">Sil</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -69,6 +70,11 @@ require_once ('kullaniciKontrol.php');
 											<td>{{row.fotograf_durum_tnm}}</td>
 											<td><img  src="{{row.k_dosya_adi}}" height="50px" ></td>
 											<td style="width: 20%;">{{row.fotograf_not}}</td>
+											<td style="width: 1%; text-align: center;">
+											<button type="button"
+													class="btn btn-danger glyphicon glyphicon-trash"
+													data-ng-click="fotografSil(row.id,row.firma_id);"></button>
+											</td>
 										</tr>
 									</tbody>
 								</table>
