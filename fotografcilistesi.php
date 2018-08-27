@@ -65,7 +65,7 @@
 			<div class="row g-row-col-5 g-margin-b-50--xs g-padding-y-20--lg g-padding-x-30--lg" ng-repeat="row in list track by $index">
     			<div class="col-sm-2 g-margin-b-30--xs g-margin-b-0--md">
     			<div class=" img-radius_1">
-    				<img class="g-bg-color--white"  src="img/firma/logo/{{row.firma_logo}}">
+    				<img class="g-bg-color--white" width="100px"  src="img/firma/logo/{{row.firma_logo}}">
     				</div>
     			</div>
     			<div class="col-sm-10">
