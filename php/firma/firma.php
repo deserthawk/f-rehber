@@ -34,11 +34,12 @@ if($formFlag == 1512 ){
     if($boyutlar[0] != 100 && $boyutlar[1] != 100 ){
         $warningInfo = new Warning();
         $warningInfo->setWarningId(1);
-        $warningInfo->setWarningTnm("Girilen dosya boyutu " . $boyutlar[0] . " X " . $boyutlar[1].". Lütfen boyutlarý 100 X 100 þeklinde olan bir dosya yükleyiniz."  );
+        $warningInfo->setWarningTnm("Girilen dosya boyutu " . $boyutlar[0] . " X " . $boyutlar[1].". LÃ¼tfen boyutlarÄ± 100 X 100 ÅŸeklinde olan bir dosya yÃ¼kleyiniz."  );
         $returnArry[] = $warningInfo;
         die(json_encode($returnArry, JSON_UNESCAPED_UNICODE));        
     }
     
+    /*
     $tempSabitVTK = new sabitVTK();
     $logoPath = $tempSabitVTK->getSabit("LOGO_REAL_PATH");    
     
@@ -46,7 +47,7 @@ if($formFlag == 1512 ){
     move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $logoPath[0]. $tempFirmaModel->getId(). '.png');
     $returnArry[] = $tempFirmaVTK->firmaLogoGuncelle($tempFirmaModel->getId(),$tempFirmaModel->getId(). '.png');
  
-    die(json_encode($returnArry, JSON_UNESCAPED_UNICODE));
+    die(json_encode($returnArry, JSON_UNESCAPED_UNICODE));*/
 }
 
 

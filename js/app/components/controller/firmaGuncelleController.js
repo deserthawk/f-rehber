@@ -148,7 +148,6 @@ app.controller('firmaGuncelleCtrl', function($scope, serverService,notificationS
 		var formData = $("#logoGuncelleForm").serializeArray();
 		var fd = new FormData();
 		var file = $scope.myFile;
-		debugger;
 		var extn = file.name.split(".").pop();
 		if(extn!="png"){
 			notificationService.error1("Lütfen uzantısı .png olan bir doysa seçiniz.");
@@ -163,7 +162,8 @@ app.controller('firmaGuncelleCtrl', function($scope, serverService,notificationS
 	    }
 		
 		serverService.sendFormDataObject("../php/firma/firma.php",fd).then(function(payload){
-			console.log(payload.data);
+			debugger;
+		//	console.log(payload.data);
 			if(payload.data[0].warningId == 0){
 				notificationService.success(payload.data[0].warningTnm);
 				frmDetayetir($('#mainFirmaID').val());
