@@ -39,7 +39,7 @@ if($formFlag == 1512 ){
         die(json_encode($returnArry, JSON_UNESCAPED_UNICODE));        
     }
     
-    /*
+    
     $tempSabitVTK = new sabitVTK();
     $logoPath = $tempSabitVTK->getSabit("LOGO_REAL_PATH");    
     
@@ -47,7 +47,7 @@ if($formFlag == 1512 ){
     move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $logoPath[0]. $tempFirmaModel->getId(). '.png');
     $returnArry[] = $tempFirmaVTK->firmaLogoGuncelle($tempFirmaModel->getId(),$tempFirmaModel->getId(). '.png');
  
-    die(json_encode($returnArry, JSON_UNESCAPED_UNICODE));*/
+    die(json_encode($returnArry, JSON_UNESCAPED_UNICODE));
 }
 
 
