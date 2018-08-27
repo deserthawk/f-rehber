@@ -26,6 +26,10 @@
                     <p class="g-font-size-18--xs g-font-size-26--md g-color--white g-margin-b-0--xs">
 						Çiftlerin kendileri için en uygun fotoğrafçıyı bulması, fotoğrafçıların daha fazla kişiye ulaşalabilir olması ve müşteri portföyünü genişletmesi 
 						için kurulmuş bir web sitesidir. </p>
+                    <p class="g-font-size-18--xs g-font-size-26--md g-color--white g-margin-b-0--xs">
+						İlham almak için fotoğrafları inceleyip, fotoğrafçıları keşfedebilirsiniz.Fotoğrafçıların profillerini, 
+						web sitelerini, sosyal medya hesaplarını inceleyebilirsiniz.
+						 </p>
                 </div>
             </div>
         </div>
