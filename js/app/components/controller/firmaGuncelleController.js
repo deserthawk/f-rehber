@@ -149,6 +149,13 @@ app.controller('firmaGuncelleCtrl', function($scope, serverService,notificationS
 		var fd = new FormData();
 		var file = $scope.myFile;
 		debugger;
+		var extn = file.name.split(".").pop();
+		if(extn!="png"){
+			notificationService.error1("Lütfen uzantısı .png olan bir doysa seçiniz.");
+			return false;
+		}
+		
+		
 		fd.append('fileToUpload',file);
 		for(i=0;i<formData.length;i++){
 	    	fd.append(formData[i].name,formData[i].value);
