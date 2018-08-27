@@ -14,19 +14,20 @@
 
         <!--========== HEADER ==========-->
        <header class="navbar-fixed-top s-header-v2 js__header-sticky">
-       <main-nav-bar></main-nav-bar>
+       <main-nav-bar color-class="g-color--dark"></main-nav-bar>
        </header>
         <!--========== END HEADER ==========-->
 
         <!--========== PROMO BLOCK ==========-->
-        <div class="g-fullheight--md js__parallax-window" style="background: url(img/site/about.jpg) 50% 0 no-repeat fixed;">
+  <!--       <div class="g-fullheight--md js__parallax-window" style="background: url(img/site/about.jpg) 50% 0 no-repeat fixed;"> -->
+  <div class="g-fullheight--md js__parallax-window" style="background: url(img/site/index.jpg) 50% 0 no-repeat fixed;">
             <div class="g-container--md g-text-center--xs g-ver-center--md g-padding-y-150--xs g-padding-y-0--md">
                 <div class="g-margin-b-60--xs">
-                    <h1 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md g-color--white g-letter-spacing--1">Hakkımızda</h1>
-                    <p class="g-font-size-18--xs g-font-size-26--md g-color--white g-margin-b-0--xs">
+                    <h1 class="g-font-size-30--xs g-color--dark g-letter-spacing--1">Hakkımızda</h1>
+                    <p class="g-font-size-18--xs g-color--dark g-margin-b-20--xs">
 						Çiftlerin kendileri için en uygun fotoğrafçıyı bulması, fotoğrafçıların daha fazla kişiye ulaşalabilir olması ve müşteri portföyünü genişletmesi 
 						için kurulmuş bir web sitesidir. </p>
-                    <p class="g-font-size-18--xs g-font-size-26--md g-color--white g-margin-b-0--xs">
+                    <p class="g-font-size-18--xs g-color--dark g-margin-b-20--xs">
 						İlham almak için fotoğrafları inceleyip, fotoğrafçıları keşfedebilirsiniz.Fotoğrafçıların profillerini, 
 						web sitelerini, sosyal medya hesaplarını inceleyebilirsiniz.
 						 </p>
@@ -51,11 +52,10 @@
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5 g-hor-centered-row__col">
-                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">ÇİFTLER</p>
-                    <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Hakkımızda</h2>
-                    <p class="g-font-size-18--sm">Bu siteyi profesyonel düğün fotoğrafçınızı bulmanız için en iyi yer haline getirmeyi amaçladık.
-                    Çiftlere düğün fotoğrafçılarını bulmalarına yardımcı oluyoruz. Bunun bir ya da iki çarpıcı fotoğraf olmadığını düşünüyoruz, 
-                    çarpıcı fotoğraflar vasıtasıyla söylenen güzel bir hikayenin olduğuna inanıyoruz.</p>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">FOTOĞRAFÇILAR</p>
+                    <p class="g-font-size-18--sm">Fotoğraf çalışmalarınızı sergileyerek, müşteri portföyünü geliştirebilir. 
+                    Fotoğrafçı arayan çiftlerin size ulaşmasını sağlayabilirsiniz. 
+                    Profesyonel bir düğün fotoğrafçısı iseniz ve katılmak istiyorsanız lütfen başvuru yapın.</p>
                 </div>
             </div>
 
@@ -67,13 +67,12 @@
                 </div>
                 <div class="col-sm-3 col-xs-6 col-sm-push-6 g-hor-centered-row__col g-margin-b-60--xs g-margin-b-0--md">
                     <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".1s">
-                        <img class="img-responsive" src="img/site/foto6.jpg" alt="Image">
+                        <img class="img-responsive" src="img/site/foto11.jpg" alt="Image">
                     </div>
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5 col-sm-pull-7 g-hor-centered-row__col g-text-left--xs g-text-right--md">
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">MİSYONUMUZ</p>
-                    <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Misyonumuz</h2>
                     <p class="g-font-size-18--sm">Düğün fotoğrafçısını bulmak isteyen, büyük günlerini planlayan çiftleri fotoğrafçılarıyla buluşturmak.</p>
                 </div>
             </div>
@@ -92,7 +91,6 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5 g-hor-centered-row__col">
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">VİZYONUMUZ</p>
-                    <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Vizyonumuz</h2>
                     <p class="g-font-size-18--sm">Tarzınıza ve bütçenize uyan fotoğrafçıyı bulmanızı sağlamak.</p>
                 </div>
             </div>
