@@ -25,10 +25,10 @@
                 <div class="g-margin-b-60--xs">
                     <h1 class="g-font-size-30--xs g-color--dark g-letter-spacing--1">Hakkımızda</h1>
                     <p class="g-font-size-18--xs g-color--dark g-margin-b-20--xs">
-						Çiftlerin kendileri için en uygun fotoğrafçıyı bulması, fotoğrafçıların daha fazla kişiye ulaşalabilir olması ve müşteri portföyünü genişletmesi 
+						Çiftlerin kendileri için en uygun fotoğrafçıyı bulması, fotoğrafçıların daha fazla kişiye ulaşılabilir olması ve müşteri portföyünü genişletmesi 
 						için kurulmuş bir web sitesidir. </p>
                     <p class="g-font-size-18--xs g-color--dark g-margin-b-20--xs">
-						İlham almak için fotoğrafları inceleyip, fotoğrafçıları keşfedebilirsiniz.Fotoğrafçıların profillerini, 
+						İlham almak için fotoğrafları inceleyip, fotoğrafçıları keşfedebilirsiniz. Fotoğrafçıların profillerini, 
 						web sitelerini, sosyal medya hesaplarını inceleyebilirsiniz.
 						 </p>
                 </div>
@@ -53,9 +53,9 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5 g-hor-centered-row__col">
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">FOTOĞRAFÇILAR</p>
-                    <p class="g-font-size-18--sm">Fotoğraf çalışmalarınızı sergileyerek, müşteri portföyünü geliştirebilir. 
-                    Fotoğrafçı arayan çiftlerin size ulaşmasını sağlayabilirsiniz. 
-                    Profesyonel bir düğün fotoğrafçısı iseniz ve katılmak istiyorsanız lütfen başvuru yapın.</p>
+                    <p class="g-font-size-18--sm">Fotoğraf çalışmalarınızı sergileyerek, müşteri portföyünü geliştirebilir, 
+                    fotoğrafçı arayan çiftlerin size ulaşmasını sağlayabilirsiniz. 
+                    Profesyonel bir düğün fotoğrafçısıysanız ve katılmak istiyorsanız lütfen başvuru yapın.</p>
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5 col-sm-pull-7 g-hor-centered-row__col g-text-left--xs g-text-right--md">
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">MİSYONUMUZ</p>
-                    <p class="g-font-size-18--sm">Düğün fotoğrafçısını bulmak isteyen, büyük günlerini planlayan çiftleri fotoğrafçılarıyla buluşturmak.</p>
+                    <p class="g-font-size-18--sm">Düğün fotoğrafçısını bulmak isteyen, büyük günlerini planlayan çiftleri uygun fotoğrafçıyla buluşturmak.</p>
                 </div>
             </div>
             
@@ -91,7 +91,10 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-5 g-hor-centered-row__col">
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">VİZYONUMUZ</p>
-                    <p class="g-font-size-18--sm">Tarzınıza ve bütçenize uyan fotoğrafçıyı bulmanızı sağlamak.</p>
+                    <p class="g-font-size-18--sm">
+                    Gelişen teknolojileri kullanarak sitemizin gelişmesini sağlamak. Düğün fotoğrafçılarını bir araya getirip, düğün fotoğrafçısı bulmak isteyen çiftler ile buluşturmak.
+                    
+                    Tarzınıza ve bütçenize uyan fotoğrafçıyı bulmanızı sağlamak.</p>
                 </div>
             </div>
             
