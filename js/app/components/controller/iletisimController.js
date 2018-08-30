@@ -1,4 +1,4 @@
-app.controller('iletisimCtrl', function($scope, serverService,notificationService) {
+app.controller('iletisimCtrl', function($scope, serverService) {
 	$scope.konuGetir = function(){
 		serverService.getComboList("./php/gnlDegerKumesi/gnlDegerKumesiComboList.php?degerKodu=ILTSM_KONU").then(function(payload){
 			$scope.konuList=payload.data;
