@@ -24,7 +24,7 @@
 		data-ng-init="konuGetir();">
             <div class="g-container--md g-padding-y-125--xs">
                 <div class="g-text-center--xs g-margin-t-50--xs g-margin-b-60--xs">
-                    <h2 class="g-font-size-32--xs g-font-size-36--sm g-color--dark g-margin-b-20--xs">İletişim</h2>
+                    <h2 class="g-font-size-32--xs g-font-size-26--sm g-color--dark g-margin-b-20--xs">İletişim</h2>
                     <p class="g-font-size-16--xs g-color--dark-opacity">Sorularınız ve önerileriniz için formu doldurup gönderebilirsiniz.</p>
                 </div>
                 

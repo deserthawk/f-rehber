@@ -92,9 +92,8 @@
                 <div class="col-sm-5 g-hor-centered-row__col">
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">VİZYONUMUZ</p>
                     <p class="g-font-size-16--sm">
-                    Gelişen teknolojileri kullanarak sitemizin gelişmesini sağlamak. 
-                    Düğün fotoğrafçılarını bir araya getirip, 
-                    düğün fotoğrafçısı bulmak isteyen çiftler ile buluşturmak.</p>
+                    İlerleyen teknolojileri kullanarak sitemizin gelişmesini ve
+					Türkiye çapındaki profesyonel düğün fotoğrafçılarının bünyemize katılmasını sağlamak.</p>
                 </div>
             </div>
             
