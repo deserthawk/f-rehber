@@ -9,6 +9,11 @@ require_once ('kullaniciKontrol.php');
 	src="../js/app/components/controller/adminNavBarController.js"></script>
 <script type="text/javascript"
 	src="../js/app/components/controller/iletisimListesiController.js"></script>
+<style>
+.heightModal {
+	height: 100px;
+}
+</style>
 <title>İletişim Listesi</title>
 </head>
 <body data-ng-app="fotografRehber">
@@ -24,8 +29,9 @@ require_once ('kullaniciKontrol.php');
 					<div class="panel-body">
 						<div class="row">
 							<form id="theForm" method="post" name="theForm">
-							<input type="hidden" id="theFormId" name="theFormId" value="1511">
-							<input type="hidden" id="rNum" name="rNum" value="2">
+								<input type="hidden" id="theFormId" name="theFormId"
+									value="1511"> <input type="hidden" id="rNum" name="rNum"
+									value="2">
 								<div class="col-lg-12 padding_t_5">
 									<input class="form-control" type="text" id="mesaj" name="mesaj"
 										placeholder="Aranacak mesajı giriniz...">
@@ -52,42 +58,59 @@ require_once ('kullaniciKontrol.php');
 							</form>
 						</div>
 						<div class="row">
-    						<table st-table="displayedCollection" st-safe-src="rowCollection"
-    						class="table table-striped">
-        						<thead>
-        							<tr>
-        								<th>İletişim Tip</th>
-        								<th>Ad Soyad</th>
-        								<th>E-Posta</th>
-        								<th>Telefon</th>
-        								<th>Mesaj</th>
-        								<th>Ekleme Tarihi</th>
-        								<th>Mesaj Durum</th>
-        							</tr>
-        						</thead>
-        						<tbody>
-        							<tr ng-repeat="row in list track by $index"
-        								ng-class="{'selected':$index == selectedRow}"
-        								data-ng-click="setClickedRow($index)">
-        								<td>{{row.ILETISIM_TIP_TNM}}</td>
-        								<td>{{row.AD_SOYAD}}</td>
-        								<td>{{row.E_POSTA}}</td>
-        								<td>{{row.TELEFON}}</td>
-        								<td><button type="submit" class="btn btn-primary glyphicon glyphicon-search font-size_8"></button>{{row.TEMP_MESAJ}}</td>
-        								<td>{{row.EKLEME_TARIHI}}</td>
-        								<td>{{row.MESAJ_DURUM_TNM}}</td>
-        							</tr>
-        						</tbody>
-    						</table>
+							<table st-table="displayedCollection" st-safe-src="rowCollection"
+								class="table table-striped">
+								<thead>
+									<tr>
+										<th>İletişim Tip</th>
+										<th>Ad Soyad</th>
+										<th>E-Posta</th>
+										<th>Telefon</th>
+										<th>Mesaj</th>
+										<th>Ekleme Tarihi</th>
+										<th>Mesaj Durum</th>
+										<th>Sil</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="row in list track by $index"
+										ng-class="{'selected':$index == selectedRow}"
+										data-ng-click="setClickedRow($index)">
+										<td>{{row.ILETISIM_TIP_TNM}}</td>
+										<td>{{row.AD_SOYAD}}</td>
+										<td>{{row.E_POSTA}}</td>
+										<td>{{row.TELEFON}}</td>
+										<td><button
+												class="btn btn-primary glyphicon glyphicon-search font-size_8"
+												data-ng-click="mesajGoruntule(row.MESAJ,row.ID);"></button>{{row.TEMP_MESAJ}}</td>
+										<td>{{row.EKLEME_TARIHI}}</td>
+										<td>{{row.MESAJ_DURUM_TNM}}</td>
+										<td><button
+												class="btn btn-danger glyphicon glyphicon-trash font-size_8"
+												data-ng-click="iletisimSil(row.ID);"></button></td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 						<div class="row">
-						<div id="returnData"></div>
-						 
+						<div class="col-lg-12">
+						<button type="submit" class="btn btn-primary"
+										data-ng-click="dahaFazlaKayit();">Daha Fazla Kayıt</button>
+						</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- MESAJ GORUNTULEME START -->
+		<modal modal-name="mesajGoruntulemeModal"
+			modal-class="modal-dialog modal-lg"> <modal-header>Mesaj Gürüntüleme</modal-header>
+		<modal-body modal-class="heightModal">
+		<div class="row">
+			<div class="col-lg-12 padding_l_40">{{mesajIcerik}}</div>
+		</div>
+		</modal-body> <modal-footer kapat-icerik="Kapat"> </modal-footer> </modal>
+		<!-- MESAJ GORUNTULEME END -->
 	</div>
 </body>
 </html>

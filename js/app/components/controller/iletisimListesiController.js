@@ -12,7 +12,12 @@ app.controller('iletisimListesiCtrl', function($scope, serverService,notificatio
 	};
 	
 	$scope.iletisimAra = function(){
-		$('#rNum').val(sabitler.ROW_DEGER);
+		iletisimAraList();
+	};
+	
+	var iletisimAraList = function(tempRowNum){
+		if(tempRowNum==null)
+			$('#rNum').val(sabitler.ROW_DEGER);
 		var formData = $("#theForm").serializeArray();
 		var fd = new FormData();
 		for(i=0;i<formData.length;i++){
@@ -24,6 +29,34 @@ app.controller('iletisimListesiCtrl', function($scope, serverService,notificatio
 				$scope.list=payload.data[1];
 			else
 				notificationService.error1(payload.data[0].warningTnm);
+		});
+	};
+	
+	$scope.mesajGoruntule = function(value,pIletisimId){
+		$('#mesajGoruntulemeModal').modal('show');
+		$scope.mesajIcerik = value;
+		serverService.sendGetJson("../php/iletisim/iletisimG.php?pGetId=1501&pIletisimId=" +pIletisimId).then(function(payload){
+			notificationService.success(payload.data.warningTnm);
+			iletisimAraList($('#rNum').val());
+		});
+	};
+	
+	$scope.dahaFazlaKayit = function(){
+		$('#rNum').val(parseInt($('#rNum').val()) + sabitler.ROW_DEGER);
+		var formData = $("#theForm").serializeArray();
+		var fd = new FormData();
+		for(i=0;i<formData.length;i++){
+			fd.append(formData[i].name,formData[i].value);
+		}
+		serverService.sendFormDataObject("../php/iletisim/iletisimP.php",fd).then(function(payload){
+			$scope.list= payload.data[1];
+		});
+	};
+	
+	$scope.iletisimSil = function(pIletisimId){
+		serverService.sendGetJson("../php/iletisim/iletisimG.php?pGetId=1511&pIletisimId=" +pIletisimId).then(function(payload){
+			notificationService.success(payload.data.warningTnm);
+			iletisimAraList($('#rNum').val());
 		});
 	}
 });
