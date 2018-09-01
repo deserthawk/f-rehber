@@ -10,6 +10,9 @@ $warningInfo = new Warning();
 if(isset($_POST['pGetId'])){
     $localGetId = $_POST['pGetId'];
 }
+if(isset($_POST['theFormId'])){
+    $localGetId = $_POST['theFormId'];
+}
 
 if($localGetId==1501){
     $warningInfo = iletisimModelKontrol('iletisimKonu',"Lütfen KONU seçiniz.");
@@ -30,6 +33,21 @@ if($localGetId==1501){
     
     $returnArry[]=$tempIletisimVTK->ekle($_POST['iletisimKonu'], $_POST['adSoyad'], $_POST['ePosta'],$_POST['telefon'],$_POST['mesaj']);
     die(json_encode($returnArry, JSON_UNESCAPED_UNICODE));
+}
+
+$tempRNum;
+/**
+ * rNum degeri max olarak 100'e set edilir.
+ */
+if (isset($_POST['rNum'])) {
+    if (intval($_POST['rNum']) > 100) {
+        $tempRNum = 100;
+    } else {
+        $tempRNum = intval($_POST['rNum']);
+    }
+}
+if($localGetId==1511){
+    die(json_encode($tempIletisimVTK->getIletisimList($_POST['mesaj'], $_POST['iletisimKonu'], $_POST['mesajDurum'], 0, $tempRNum), JSON_UNESCAPED_UNICODE));
 }
 
 function iletisimModelKontrol($pPostId, $pHataString){

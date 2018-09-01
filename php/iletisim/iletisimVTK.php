@@ -42,5 +42,70 @@ class iletisimVTK
             return $warningInfo;
         }
     }
+    
+    function getIletisimList($pMesaj,$pIletisimTip,$pMesajDurum, $pmin,$pmax){
+        $warningInfo = new Warning();
+        $sonuc =array();
+        try{
+            $pdo = connectionVT();
+            $sqlString = "SELECT 
+                              TI.ILETISIM_TIP_ID, 
+                              (SELECT GDK.DEGER FROM TBL_GNL_DEGER_KUMESI GDK 
+                                    WHERE GDK.ID = TI.ILETISIM_TIP_ID) AS ILETISIM_TIP_TNM,  
+                              TI.AD_SOYAD, 
+                              TI.E_POSTA, 
+                              TI.TELEFON, 
+                              TI.MESAJ,
+                              SUBSTRING(TI.MESAJ, 1, 10) AS TEMP_MESAJ,
+                              TI.EKLEME_TARIHI,
+                              TI.MESAJ_DURUM,
+                              (SELECT GDK.DEGER FROM TBL_GNL_DEGER_KUMESI GDK 
+                                  WHERE GDK.ID = TI.MESAJ_DURUM) AS MESAJ_DURUM_TNM 
+                             FROM TBL_ILETISIM TI 
+                             WHERE 1=1 AND TI.MESAJ LIKE :mesaj";
+            //iletisim tip degeri varsa sorguya eklenir.
+            if($pIletisimTip!=null){
+                $sqlString=$sqlString." AND TI.ILETISIM_TIP_ID = :iletisimtip ";
+            }
+            //mesaj durum degeri varsa sorguya eklenir.
+            if($pMesajDurum!=null){
+                $sqlString=$sqlString." AND TI.MESAJ_DURUM = :mesajdurum ";
+            }
+            $sqlString=$sqlString." ORDER BY TI.EKLEME_TARIHI DESC ";
+            $sqlString=$sqlString." Limit :min,:max";
+            
+            $sql = $pdo->prepare($sqlString);
+            $tempMesaj = '%' . $pMesaj . '%';
+            
+            //il degeri varsa deger bind edilir.
+            if($pIletisimTip!=null){
+                $sql->bindParam(':iletisimtip', $pIletisimTip , PDO::PARAM_STR);
+            }
+            if($pMesajDurum!=null){
+                $sql->bindParam(':mesajdurum', $pMesajDurum , PDO::PARAM_STR);
+            }
+            
+            
+            $min = $pmin;
+            $max = $pmax;
+            $sql->bindParam(':min', $min ,PDO::PARAM_INT );
+            $sql->bindParam(':max', $max ,PDO::PARAM_INT );
+            $sql->bindParam(':mesaj', $tempMesaj , PDO::PARAM_STR);
+            $sql->execute();
+            $result = $sql->fetchAll();
+            $warningInfo->setWarningId(0);
+            $sonuc[] = $warningInfo;
+            $sonuc[] = $result;
+            
+            return $sonuc;
+            
+        }
+        catch (PDOException $e) {
+            $warningInfo->setWarningId(1);
+            $warningInfo->setWarningTnm($e->getMessage() . ' ' . $sqlString . ' mesaj:'. $tempMesaj . ' min:' .$min . ' max:' . $max );
+            $sonuc[] =$warningInfo;
+            return $sonuc;
+        }
+    }
 }
 ?>
