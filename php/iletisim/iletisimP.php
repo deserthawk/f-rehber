@@ -15,31 +15,11 @@ if(isset($_POST['theFormId'])){
 }
 
 if($localGetId==1501){
-    $response = $_POST["g-recaptcha-response"];
-    
-    $url = 'https://www.google.com/recaptcha/api/siteverify';
-    $data = array(
-        'secret' => '6LcATm0UAAAAAM1ruyJYkl5gc8uhBDXpM29miflc',
-        'response' => $_POST["g-recaptcha-response"]
-    );
-    $options = array(
-        'http' => array (
-            'header' => "Content-Type: application/x-www-form-urlencoded\r\n". 
-            "Content-Length: ".strlen(http_build_query($data))."\r\n". 
-                        "User-Agent:MyAgent/1.0\r\n",
-            'method' => 'POST',
-            'content' => http_build_query($data)
-        )
-    );
-    $context  = stream_context_create($options);
-    $verify = file_get_contents($url, false, $context);
-    $captcha_success=json_decode($verify);
-    if ($captcha_success->success==false) {
-        $warningInfo->setWarningId(1);
-        $warningInfo->setWarningTnm("Recapctha hatası alındı.");
+    $warningInfo = recaptchaKontrol();
+    if($warningInfo->getWarningId()==1){
         $returnArry[]=$warningInfo;
         die(json_encode($returnArry, JSON_UNESCAPED_UNICODE));
-    }    
+    }
     
     $warningInfo = iletisimModelKontrol('iletisimKonu',"Lütfen KONU seçiniz.");
     if($warningInfo->getWarningId()==1){
@@ -89,6 +69,44 @@ function iletisimModelKontrol($pPostId, $pHataString){
     }
     return $tempWarningInfo;
     
+}
+
+function recaptchaKontrol(){
+    $tempWarningInfo = new Warning();
+    $tempWarningInfo->setWarningId(0);
+    
+    if(!isset($_POST['g-recaptcha-response'])){
+        $tempWarningInfo->setWarningId(1);
+        $tempWarningInfo->setWarningTnm("Recapctha hatası alındı.");
+    }
+    
+    $response = $_POST["g-recaptcha-response"];
+    
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = array(
+        'secret' => '6LcATm0UAAAAAM1ruyJYkl5gc8uhBDXpM29miflc',
+        'response' => $response
+    );
+    $options = array(
+        'http' => array (
+            'header' => "Content-Type: application/x-www-form-urlencoded\r\n".
+            "Content-Length: ".strlen(http_build_query($data))."\r\n".
+            "User-Agent:MyAgent/1.0\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($data)
+        )
+    );
+    $context  = stream_context_create($options);
+    $verify = file_get_contents($url, false, $context);
+    $captcha_success=json_decode($verify);
+    if ($captcha_success->success==false) {
+        $tempWarningInfo->setWarningId(1);
+        $tempWarningInfo->setWarningTnm("Recapctha hatası alındı.");
+        return $tempWarningInfo;
+    }    
+    
+    
+    return $tempWarningInfo;
 }
 
 ?>
