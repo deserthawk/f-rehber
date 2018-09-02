@@ -12,7 +12,7 @@ app.controller('iletisimCtrl', function($scope, serverService) {
 	    	fd.append(formData[i].name,formData[i].value);
 	    }
 		serverService.sendFormDataObject("./php/iletisim/iletisimP.php",fd).then(function(payload){
-			debugger;
+			
 			if(payload.data[0].warningId == 0){
 				$("#warningMessageSuccess").show();
 				$("#warningMessageDanger").hide();
@@ -22,12 +22,13 @@ app.controller('iletisimCtrl', function($scope, serverService) {
 				$("#warningMessageDanger").show();
 				$("#warningMessageSuccess").hide();
 				$scope.returnMessageDanger = payload.data[0].warningTnm;
+				grecaptcha.reset();
 			}
 			else{
 				$("#warningMessageDanger").show();
 				$("#warningMessageSuccess").hide();
 				$('#warningMessageDanger').html(payload.data);
-				//$scope.returnMessageDanger = payload.data;
+				grecaptcha.reset();
 			}
 	
 		});
