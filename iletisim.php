@@ -8,7 +8,7 @@
         ?>
         <script type="text/javascript"
 	src="./js/app/components/controller/iletisimController.js"></script>
-	
+	<script src='https://www.google.com/recaptcha/api.js'></script>	
     </head>
 <!-- End Head -->
 
@@ -60,13 +60,15 @@
                     <div class="g-margin-b-80--xs">
                         <textarea class="form-control s-form-v4__input" rows="5" placeholder="* Mesaj" name="mesaj" id="mesaj"></textarea>
                     </div>
+                    <div class="g-recaptcha g-margin-b-80--xs" data-sitekey="6LcATm0UAAAAAL0zyJpU92NsIbJzPoSSuRkQrxvS"></div>
                     <div class="alert alert-success" style="display:none;" id="warningMessageSuccess">
   						<strong>{{returnMessageSuccess}}</strong>
 					</div>
                     <div class="alert alert-danger" style="display:none;" id="warningMessageDanger">
   						<strong>{{returnMessageDanger}}</strong>
 					</div>
-                    <div class="g-text-center--xs">
+                    
+                    <div class="g-text-center--xs ">
                         <button type="submit" data-ng-click="iletisimEkle();" class="text-uppercase s-btn s-btn--md s-btn--primary-bg g-radius--50 g-padding-x-70--xs g-margin-b-20--xs">Gönder</button>
                     </div>
                     
