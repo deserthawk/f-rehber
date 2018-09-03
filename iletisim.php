@@ -33,7 +33,7 @@
                         <div class="g-text-center--xs">
                             <i class="g-display-block--xs g-font-size-40--xs g-color--dark-opacity g-margin-b-30--xs ti-email"></i>
                             <h4 class="g-font-size-18--xs g-color--dark g-margin-b-5--xs">e-posta</h4>
-                            <p class="g-color--dark-opacity">support@keenthemes.com</p>
+                            <p class="g-color--dark-opacity">info@profesyoneldugunfotografcim.com</p>
                         </div>
                     </div>          
                 </div>

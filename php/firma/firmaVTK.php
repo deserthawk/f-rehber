@@ -74,7 +74,7 @@ class firmaVTK
             $warningInfo->setWarningId(0);
             $sonuc[] = $warningInfo;
             $sonuc[] = $result;
-                        
+            $pdo = null;
             return $sonuc;
             
         }
@@ -297,7 +297,8 @@ class firmaVTK
             $warningInfo->setWarningId(0);
             $sonuc[] = $warningInfo;
             $sonuc[] = $result;
-            
+            $sql = null;
+            $pdo = null;
             return $sonuc;
             
         }

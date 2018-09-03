@@ -47,13 +47,13 @@ class gnlDegerKumesiVTK
             $sql->execute();
             
             $result = $sql->fetchAll();
-            
+            $sql = null;
+            $pdo = null;
             return $result;
         } catch (PDOException $e) {
-            $pdo->rollBack();
             $warningInfo = new Warning();
             $warningInfo->setWarningId(1);
-            $warningInfo->setWarningTnm("Firma Eklenememiþtir.");
+            $warningInfo->setWarningTnm("Hata.");
             return $warningInfo;
         }
     }
@@ -73,10 +73,9 @@ class gnlDegerKumesiVTK
             
             return $result;
         } catch (PDOException $e) {
-            $pdo->rollBack();
             $warningInfo = new Warning();
             $warningInfo->setWarningId(1);
-            $warningInfo->setWarningTnm("Firma Eklenememiþtir.");
+            $warningInfo->setWarningTnm("Hata.");
             return $warningInfo;
         }
     }

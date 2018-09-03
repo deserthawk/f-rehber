@@ -42,7 +42,7 @@ class galeriVTK
             $tempGaleriVTE = new galeriVTE();
             
             $pdo = connectionVT();
-            $sql = $pdo->prepare("select id, firma_id,dosya_adi , concat((select sabit_deger from tbl_sabit where sabit_kodu = 'ADM_GLR_KF_PATH' ) , dosya_adi) k_dosya_adi,
+            $sql = $pdo->prepare("select id, firma_id,dosya_adi , concat((select sabit_deger from tbl_sabit where sabit_kodu = 'ADM_GLR_BF_PATH' ) , dosya_adi) k_dosya_adi,
                                 concat((select sabit_deger from tbl_sabit where sabit_kodu = 'ADM_GLR_BF_PATH' ) , dosya_adi) b_dosya_adi,
                                 (select deger from tbl_gnl_deger_kumesi where id = fotograf_durum) fotograf_durum_tnm, 
                                 fotograf_durum, fotograf_not from tbl_galeri where firma_id = :firmaId");
@@ -229,12 +229,12 @@ class galeriVTK
                 return $warningInfo;
             }
             //fotograf kf klasor yolundan silinir.
-            $kfPath = $tempSabitVTK->getSabit("ADM_REAL_K_PATH");
-            if(!unlink($kfPath[0].$dosyaAdi[0])){
-                $warningInfo->setWarningId(1);
-                $warningInfo->setWarningTnm("Bir hata alındı.");
-                return $warningInfo;
-            }
+//             $kfPath = $tempSabitVTK->getSabit("ADM_REAL_K_PATH");
+//             if(!unlink($kfPath[0].$dosyaAdi[0])){
+//                 $warningInfo->setWarningId(1);
+//                 $warningInfo->setWarningTnm("Bir hata alındı.");
+//                 return $warningInfo;
+//             }
             
             $warningInfo->setWarningId(0);
             $warningInfo->setWarningTnm("Fotoğraf Silindi.");

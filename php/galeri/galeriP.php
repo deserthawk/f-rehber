@@ -34,7 +34,7 @@ if($localGetId==1521){
     $fileName = uniqid();
     move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $rootPath . DIRECTORY_SEPARATOR . 'firma'. DIRECTORY_SEPARATOR . 'galeri'. DIRECTORY_SEPARATOR . 'bf'. DIRECTORY_SEPARATOR . $fileName. '.jpg');
     //move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $rootPath . '/firma/galeri/kf/'. $fileName. '.jpg');
-    copy($rootPath . '/firma/galeri/bf/'. $fileName. '.jpg', $rootPath .  DIRECTORY_SEPARATOR . 'firma'. DIRECTORY_SEPARATOR . 'galeri'. DIRECTORY_SEPARATOR . 'kf'. DIRECTORY_SEPARATOR . $fileName. '.jpg');
+    //copy($rootPath . '/firma/galeri/bf/'. $fileName. '.jpg', $rootPath .  DIRECTORY_SEPARATOR . 'firma'. DIRECTORY_SEPARATOR . 'galeri'. DIRECTORY_SEPARATOR . 'kf'. DIRECTORY_SEPARATOR . $fileName. '.jpg');
     $returnArry[]=$tempGaleriVTK->ekle($_POST['fotografYukleFirmaId'], $fileName. '.jpg');
     die(json_encode($returnArry, JSON_UNESCAPED_UNICODE));
 }
