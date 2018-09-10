@@ -114,7 +114,7 @@ class galeriVTK
             $tempGaleriVTE = new galeriVTE();
             
             // create prepared statement
-            $sql = "INSERT INTO test_fotograf.tbl_galeri
+            $sql = "INSERT INTO tbl_galeri
                         (firma_id, dosya_adi, ekleme_ip, ekleme_tarihi)
                         VALUES (:firmaId, :dosyaAdi, :eklemeIp, :eklemeTarihi)";
                 // print_r($sql);
@@ -149,7 +149,7 @@ class galeriVTK
             $tempGaleriVTE = new galeriVTE();
             
             // create prepared statement
-            $sql = "UPDATE test_fotograf.tbl_galeri SET 
+            $sql = "UPDATE tbl_galeri SET 
                     fotograf_durum = :fotografDurum, fotograf_not = :fotografNot, 
                     guncelleme_ip = :guncellemeIp, guncelleme_tarihi = :guncellemeTarihi WHERE id = :fotografId";
             // print_r($sql);

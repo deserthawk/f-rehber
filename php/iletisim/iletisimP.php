@@ -15,6 +15,8 @@ if(isset($_POST['theFormId'])){
 }
 
 if($localGetId==1501){
+    //die(recaptchaKontrol());
+    
     $warningInfo = recaptchaKontrol();
     if($warningInfo->getWarningId()==1){
         $returnArry[]=$warningInfo;
@@ -77,7 +79,7 @@ function recaptchaKontrol(){
     
     if(!isset($_POST['g-recaptcha-response'])){
         $tempWarningInfo->setWarningId(1);
-        $tempWarningInfo->setWarningTnm("Recapctha hatası alındı.");
+        $tempWarningInfo->setWarningTnm("Token response Recapctha hatası alındı.");
     }
     
     $response = $_POST["g-recaptcha-response"];
@@ -98,10 +100,11 @@ function recaptchaKontrol(){
     );
     $context  = stream_context_create($options);
     $verify = file_get_contents($url, false, $context);
+//    return $verify;
     $captcha_success=json_decode($verify);
     if ($captcha_success->success==false) {
         $tempWarningInfo->setWarningId(1);
-        $tempWarningInfo->setWarningTnm("Recapctha hatası alındı.");
+        $tempWarningInfo->setWarningTnm($captcha_success->error-codes[0]);
         return $tempWarningInfo;
     }    
     

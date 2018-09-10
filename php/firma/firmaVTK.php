@@ -140,6 +140,7 @@ class firmaVTK
            
             $tempFirmaId = $pdo->lastInsertId();
             $tempFirmaIletisim = new firmaIletisimVTK();
+            $pdo->commit();
             // adres
             $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 1, $pIl, $pIlce,$pAdres, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
             if ($warningInfo->getWarningId() != 0) {
@@ -177,7 +178,7 @@ class firmaVTK
                 $pdo->rollBack();
                 return $warningInfo;
             }
-            $pdo->commit();
+            
             return NULL;
         } catch (PDOException $e) {
             $pdo->rollBack();

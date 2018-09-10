@@ -12,7 +12,6 @@ app.controller('iletisimCtrl', function($scope, serverService) {
 	    	fd.append(formData[i].name,formData[i].value);
 	    }
 		serverService.sendFormDataObject("./php/iletisim/iletisimP.php",fd).then(function(payload){
-			
 			if(payload.data[0].warningId == 0){
 				$("#warningMessageSuccess").show();
 				$("#warningMessageDanger").hide();

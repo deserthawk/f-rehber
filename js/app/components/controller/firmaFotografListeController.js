@@ -111,13 +111,14 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 		fd.append('fileToUpload',file);
 		for(i=0;i<formData.length;i++){
 	    	fd.append(formData[i].name,formData[i].value);
-	    	console.log("name: " +formData[i].name + " value: " + formData[i].value);
 	    }
 		
 		serverService.sendFormDataObject("../php/galeri/galeriP.php",fd).then(function(payload){
 			console.log(payload.data);
 			if(payload.data[0].warningId == 0){
 				notificationService.success(payload.data[0].warningTnm);
+				getFirmaFotografList($('#fotografYukleFirmaId').val());
+				
 			}
 			else{
 				notificationService.error1(payload.data[0].warningTnm);

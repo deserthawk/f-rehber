@@ -15,7 +15,7 @@ class iletisimVTK
             $buGun = gecerli_tarih_saat();
             
             // create prepared statement
-            $sql = "INSERT INTO test_fotograf.tbl_iletisim
+            $sql = "INSERT INTO tbl_iletisim
                         ( iletisim_tip_id, ad_soyad, e_posta, telefon, mesaj, mesaj_durum, ekleme_ip, ekleme_tarihi)
                         VALUES (:iletisimTip , :adSoyad, :ePosta, :telefon, :mesaj, 36 ,:eklemeIp, :eklemeTarihi)";
             // print_r($sql);
@@ -38,6 +38,7 @@ class iletisimVTK
         } catch (PDOException $e) {
             $warningInfo = new Warning();
             $warningInfo->setWarningId(1);
+//            $warningInfo->setWarningTnm($e->getMessage());
             $warningInfo->setWarningTnm("Mesaj İletilemedi.");
             return $warningInfo;
         }
