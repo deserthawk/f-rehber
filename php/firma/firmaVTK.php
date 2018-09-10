@@ -61,14 +61,31 @@ class firmaVTK
         }
     }
     
-    function getList(){
+    function getList($pfirmaAdi,$ptelefon,$pmin,$pmax){
         $warningInfo = new Warning();
         $sonuc =array();
         try{
             $tempFirmaVTE = new firmaVTE();
             
             $pdo = connectionVT();
-            $sql = $pdo->prepare("SELECT " . $tempFirmaVTE->getId() . ", " . $tempFirmaVTE->getFirmaAdi() . " FROM TBL_FIRMA");
+            $sqlString = "SELECT id , firma_adi FROM TBL_FIRMA where 1=1 ";
+            
+            
+            $sqlString = $sqlString ." and TBL_FIRMA.firma_adi like :firmaAdi ";
+            
+            $sqlString = $sqlString." Limit :min,:max";
+            
+            $min = $pmin;
+            $max = $pmax;
+            
+            $sql = $pdo->prepare($sqlString);
+            
+            $tempFirmaAdi = '%' . $pfirmaAdi . '%';
+            
+            $sql->bindParam(':min', $min ,PDO::PARAM_INT );
+            $sql->bindParam(':max', $max ,PDO::PARAM_INT );
+            $sql->bindParam(':firmaAdi', $tempFirmaAdi , PDO::PARAM_STR);
+            
             $sql->execute();
             $result = $sql->fetchAll();
             $warningInfo->setWarningId(0);
@@ -271,7 +288,8 @@ class firmaVTK
                         IFNULL(TBL_FIRMA.firma_logo, 'camera-512.png') firma_logo,
                         tbl_firma_iletisim.deger1
                        FROM TBL_FIRMA
-                            LEFT JOIN tbl_firma_iletisim ON tbl_firma_iletisim.iletisim_tip = 1 AND tbl_firma_iletisim.firma_id = TBL_FIRMA.id) T
+                            LEFT JOIN tbl_firma_iletisim ON tbl_firma_iletisim.iletisim_tip = 1 AND tbl_firma_iletisim.firma_id = TBL_FIRMA.id
+                            where TBL_FIRMA.firma_drm = 8 ) T
                                 where 1=1
                                 and T.firma_adi like :firmaAdi";
             //il degeri varsa sorguya eklenir.

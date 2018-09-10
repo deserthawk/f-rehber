@@ -9,6 +9,9 @@ $tempFirmaVTK = new firmaVTK();
 if(isset($_POST['fotografciListTipId'])){
     $localGetId = $_POST['fotografciListTipId'];
 }
+if(isset($_POST['firmaListTipId'])){
+    $localGetId = $_POST['firmaListTipId'];
+}
 
 $tempRNum;
 /**
@@ -26,6 +29,9 @@ if (isset($_POST['rNum'])) {
      */
     if ($localGetId == 1501) {
         die(json_encode($tempFirmaVTK->getFirmaMainList($_POST['firmaAdi'], $_POST['ilAra'], 0, $tempRNum), JSON_UNESCAPED_UNICODE));
+    }
+    if ($localGetId == 1511) {
+        die(json_encode($tempFirmaVTK->getList($_POST['firmaAdi'],$_POST['telefon'],0,$tempRNum), JSON_UNESCAPED_UNICODE));
     }
 }
 

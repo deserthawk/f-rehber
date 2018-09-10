@@ -1,4 +1,4 @@
-app.controller('firmaListeleCtrl', function($scope, serverService,notificationService) {
+app.controller('firmaListeleCtrl', function($scope, serverService,notificationService,sabitler) {
 	
 	
 	$scope.firmaEkleme = function() {
@@ -16,18 +16,49 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 		});
 	};
 	
-	
-	$scope.firmaListGetir = function(){
-		var formData = $("#theForm").serializeArray();
-		serverService.sendJsonObject("../php/firma/firmaListele.php",JSON.stringify(formData)).then(function(payload){
-			if(payload.data[0].warningId == 0){
-				$scope.list=payload.data[1];
-			}
-			else{
-				notificationService.error1(payload.data[0].warningTnm);
-			}
-		});
+	$scope.firmaListeGetir = function(){
+		firmaListGetir();
 	};
+	
+	var firmaListGetir = function(flag){
+		$('#rNum').val(sabitler.ROW_DEGER);
+		if(flag ==1){
+			$('#rNum').val(parseInt($('#rNum').val()) + sabitler.ROW_DEGER);
+		}
+		var formData = $("#theForm").serializeArray();
+		var fd = new FormData();
+		for(i=0;i<formData.length;i++){
+	    	fd.append(formData[i].name,formData[i].value);
+	    	console.log("name: " +formData[i].name + " value: " + formData[i].value);
+	    }
+		serverService.sendFormDataObject("../php/firma/firmaP.php",fd).then(function(payload){
+			if(payload.data[0].warningId==0)
+				$scope.list=payload.data[1];
+			else
+				$('#returnData').html(payload.data);
+		});
+		
+		
+		$scope.dahaFirmaListGetir = function(){
+			firmaListGetir(1);
+		}
+		
+		
+//		var formData = $("#theForm").serializeArray();
+//		serverService.sendJsonObject("../php/firma/firmaListele.php",JSON.stringify(formData)).then(function(payload){
+//			if(payload.data[0].warningId == 0){
+//				$scope.list=payload.data[1];
+//			}
+//			else{
+//				notificationService.error1(payload.data[0].warningTnm);
+//			}
+//		});
+	};
+	
+	$scope.firmaAra = function(){
+		firmaListGetir();
+	};
+	
 	$scope.sehirList = function(){
 		serverService.getComboList("../php/gnlDegerKumesi/gnlDegerKumesiComboList.php?degerKodu=IL").then(function(payload){
 			$scope.ilList=payload.data;

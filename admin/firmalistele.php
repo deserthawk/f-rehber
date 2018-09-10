@@ -29,11 +29,13 @@ padding-top: 10px;
 <body data-ng-app="fotografRehber">
 <admin-nav-bar></admin-nav-bar>
 	<div data-ng-controller="firmaListeleCtrl"
-		data-ng-init="firmaListGetir();sehirList();">
+		data-ng-init="sehirList();">
 		<section>
 			<div class="container-fluid">
 				<div class="row">
 					<form id="theForm" name="theForm">
+						<input type="hidden" id="firmaListTipId" name="firmaListTipId" value="1511"> 
+						<input type="hidden" id="rNum" name="rNum" value="2">
 						<div class="form-inline">
 							<div class="form-group">
 								<label>Firma Adı:</label> <input class="form-control"  type="text" id="firmaAdi" name="firmaAdi">
@@ -49,6 +51,7 @@ padding-top: 10px;
 							</div>
 						</div>
 					</form>
+					
 				</div>
 			</div>
 		</section>
@@ -88,6 +91,10 @@ padding-top: 10px;
 						</tbody>
 					</table>
 				</div>
+				<input type="button" id="btnDahaFirma" 
+				class="btn btn-primary" 
+				data-ng-click="dahaFirmaListGetir()" 
+				value="Daha Fazla Kayıt Getir">
 			</div>
 		</section>
 
