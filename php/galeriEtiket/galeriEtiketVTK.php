@@ -77,5 +77,31 @@ class galeriEtiketVTK
         }
     }
     
+    function fotografEtiketSil($pGaleriId){
+        try{
+            $warningInfo = new Warning();
+            
+            $sql="DELETE FROM tbl_galeri_etiket WHERE galeri_id=:galeriId";
+            
+            $pdo = connectionVT();
+            $stmt = $pdo->prepare($sql);
+            
+            $stmt->bindParam(':galeriId', $pGaleriId);
+            $stmt->execute();
+            
+            $warningInfo->setWarningId(0);
+            $warningInfo->setWarningTnm("Fotoðrafýn etiketleri silindi.");
+            
+            return $warningInfo;
+        }
+        catch (PDOException $e) {
+            //to_do log tablosuna veri yazýlýr.
+            
+            $warningInfo->setWarningId(1);
+            $warningInfo->setWarningTnm("Veri tabaný hatasý alýndý.");
+            return $warningInfo;
+        }
+    }
+    
 }
 ?>

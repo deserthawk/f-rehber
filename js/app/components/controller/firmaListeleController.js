@@ -2,6 +2,7 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 	
 	
 	$scope.firmaEkleme = function() {
+		debugger;
 		var formData = $("#firmaEkleForm").serializeArray();
 		serverService.sendJsonObject("../php/firma/firmaEkle.php",JSON.stringify(formData)).then(function(payload){
 			console.log(payload.data);

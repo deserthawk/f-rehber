@@ -19,7 +19,7 @@ require_once ('userDahilDosyalar.html');
 		data-ng-init="fotografciDetayGetir(<?php echo ($_GET["id"]); ?>)">
 		<!--========== PROMO BLOCK ==========-->
 		<div class="g-bg-color--sky-light">
-			<div class="container g-padding-y-125--xs">
+			<div class="container g-padding-y-150--xs">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="col-md-2">
@@ -27,16 +27,16 @@ require_once ('userDahilDosyalar.html');
 						</div>
 						<div class="col-md-10">
 							<div class="col-md-12">
-								<p class="g-font-size-22--xs g-font-size-24--md g-margin-b-0--xs">Fotoğrafçı Adı: {{firmaAdi}}</p>
+								<p class="g-font-size-18--xs g-font-size-18--md g-margin-b-0--xs">Fotoğrafçı Adı: {{firmaAdi}}</p>
 							</div>
 							<div ng-repeat="row in iletisimList track by $index">
     							<div class="col-md-12">
-    								<p class="g-font-size-22--xs g-font-size-24--md g-margin-b-0--xs">{{row.deger}}: {{row.deger1}}</p>							
+    								<p class="g-font-size-16--xs g-font-size-16--md g-margin-b-0--xs">{{row.deger}}: {{row.deger1}}</p>							
     							</div>
 							</div>
 							
 							<div class="col-md-12">
-								<p class="g-font-size-22--xs g-font-size-24--md g-margin-b-0--xs">Adres: {{adresText}}</p>							
+								<p class="g-font-size-16--xs g-font-size-16--md g-margin-b-0--xs">Adres: {{adresText}}</p>							
 							</div>
 						</div>
 					</div>
