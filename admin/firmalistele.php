@@ -75,8 +75,8 @@ padding-top: 10px;
 								ng-class="{'selected':$index == selectedRow}"
 								data-ng-click="setClickedRow($index)">
 								<td>{{row.firma_adi}}</td>
-								<td></td>
-								<td></td>
+								<td>{{row.telefon}}</td>
+								<td>{{row.firma_drm}}</td>
 								<td style="width: 2%;"><button type="button"
 										class="btn btn-default glyphicon glyphicon-camera"
 										data-ng-click="firmaFotoListele(row.id);"></button></td>

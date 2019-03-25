@@ -71,20 +71,17 @@
 						data-ng-click="fotografciListGetir()" value="Ara">
 				</div>
 			</form>
-
-			<div class="row g-row-col-5 g-margin-b-50--xs g-padding-y-20--lg g-padding-x-30--lg" ng-repeat="row in list track by $index">
-    			<div class="col-sm-2 g-margin-b-30--xs g-margin-b-0--md">
-    			<div class=" img-radius_1">
-    				<img class="g-bg-color--white" width="100px"  src="img/firma/logo/{{row.firma_logo}}">
+			<div class="row "  >
+    			<div class="col-lg-4 col-md-6 col-sm-6" style="border-style: solid; border-width: 0px;text-align: center; border-radius: 5%;" ng-repeat="row in list track by $index">
+    				<div class="g-radius--50 col-lg-12 offset-lg-3 g-margin-t-20--xs" >
+        				<img class="g-bg-color--white" width="100px"  src="img/firma/logo/{{row.firma_logo}}">
+        			</div>
+        			<div class=" col-lg-12 g-radius--50 g-margin-t-20--xs">{{row.firma_adi}}</div>
+        			<div class="col-lg-12 g-radius--50 g-margin-t-20--xs g-margin-b-20--xs">
+        				<input type="button" class="text-uppercase s-btn s-btn--md s-btn--white-bg g-radius--50" id="btnFirmaEkle"
+    						data-ng-click="fotografciDetay(row.id)" value="İncele" >
     				</div>
-    			</div>
-    			<div class="col-sm-10">
-    				{{row.firma_adi}}
-    			</div>
-    			<div>
-    			<input type="button" class="btn btn-primary" id="btnFirmaEkle"
-						data-ng-click="fotografciDetay(row.id)" value="İncele" >
-    			</div>
+        		</div>    			
 			</div>
 			
 			<input type="button" id="btnFirmaAra" 
@@ -95,5 +92,24 @@
 		</div>
 		</div>
 	<!-- <div id="returnData"></div> -->
+	<!--========== FOOTER ==========-->
+        <footer class="g-bg-color--white">
+            <!-- Links -->
+            
+            <!-- End Links -->
+
+            <!-- Copyright -->
+            <div class="container g-padding-y-50--xs">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="index.php">
+                            <img class="g-width-100--xs g-height-auto--xs" src="img/logo.png" alt="Megakit Logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Copyright -->
+        </footer>
+        <!--========== END FOOTER ==========-->
 </body>
 </html>

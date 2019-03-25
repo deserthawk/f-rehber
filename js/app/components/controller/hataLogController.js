@@ -1,4 +1,25 @@
-app.controller('firmaListeleCtrl', function($scope, serverService,notificationService,sabitler) {
+app.controller('hataLogCtrl', function($scope, serverService,notificationService,sabitler) {
+	
+	var hataLogListeGetir = function(flag){
+		var formData = $("#theForm").serializeArray();
+		var fd = new FormData();
+		for(i=0;i<formData.length;i++){
+	    	fd.append(formData[i].name,formData[i].value);
+	    	console.log("name: " +formData[i].name + " value: " + formData[i].value);
+	    }
+		serverService.sendFormDataObject("../php/hata/hata.php",fd).then(function(payload){
+			
+			debugger;
+			if(payload.data[0].warningId==0)
+				$scope.list=payload.data[1];
+			else
+				$('#returnData').html(payload.data);
+		});
+	};
+	
+	$scope.hataLogListGetir = function(){
+		hataLogListeGetir();
+	};
 	
 	
 	$scope.firmaEkleme = function() {
@@ -39,11 +60,11 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 			else
 				$('#returnData').html(payload.data);
 		});
-	};	
+		
 		
 		$scope.dahaFirmaListGetir = function(){
 			firmaListGetir(1);
-		};
+		}
 		
 		
 //		var formData = $("#theForm").serializeArray();
@@ -55,7 +76,7 @@ app.controller('firmaListeleCtrl', function($scope, serverService,notificationSe
 //				notificationService.error1(payload.data[0].warningTnm);
 //			}
 //		});
-	
+	};
 	
 	$scope.firmaAra = function(){
 		firmaListGetir();

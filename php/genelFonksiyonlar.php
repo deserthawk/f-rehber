@@ -28,4 +28,13 @@ function get_client_ip_env()
 function gecerli_tarih_saat(){
     return date("Y/m/d h:i:s");
 }
+function hata_yaz($pExceptionTanim,$pExceptionMsj,$pFonksiyonTnm,$pSqlCumle){
+    $hataVTK = new hataVTK();
+    $hataVTK->ekle($pExceptionTanim, $pExceptionMsj,$pFonksiyonTnm,$pSqlCumle);
+}
+function replace_enter_space($str){
+    $str = str_replace('\n', '', $str);
+    $str = str_replace('\r', '', $str);
+    return $str;
+}
 ?>

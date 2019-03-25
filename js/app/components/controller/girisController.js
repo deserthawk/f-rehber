@@ -7,6 +7,7 @@ app.controller('girisCtrl', function($scope, serverService,notificationService) 
 	    }
 		
 		serverService.sendFormDataObject("../php/giris/girisP.php",fd).then(function(payload){
+			debugger;
 				if(payload.data[0].warningId == 0){
 					serverService.redirect("../admin/firmalistele");
 				}

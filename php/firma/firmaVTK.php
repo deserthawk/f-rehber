@@ -1,4 +1,5 @@
 <?php
+require_once ('../hata/hataVTK.php');
 require_once ('../genelFonksiyonlar.php');
 require_once ('../vTabani/veriTabani.php');
 require_once ('firmaVTE.php');
@@ -6,8 +7,10 @@ require_once ('../firmaIletisim/firmaIletisimVTK.php');
 require_once ('../gnlDegerKumesi/gnlDegerKumesiVTE.php');
 require_once ('../warning.php');
 
+
 class firmaVTK
 {
+    
     //eklenen sorgular start
     function getFirmaAdiById($pId){
         try{
@@ -68,12 +71,15 @@ class firmaVTK
             $tempFirmaVTE = new firmaVTE();
             
             $pdo = connectionVT();
-            $sqlString = "SELECT id , firma_adi FROM TBL_FIRMA where 1=1 ";
-            
-            
-            $sqlString = $sqlString ." and TBL_FIRMA.firma_adi like :firmaAdi ";
-            
-            $sqlString = $sqlString." Limit :min,:max";
+            $sqlString = "select * from (SELECT id , firma_adi, 
+                            (select kk.deger from tbl_gnl_deger_kumesi kk 
+                                where kk.id = tbl_firma.firma_drm) as firma_drm ,
+                            firma_tel_getir(TBL_FIRMA.id) as telefon
+                          FROM TBL_FIRMA where TBL_FIRMA.firma_adi like :firmaAdi) t"; 
+//            $sqlString = $sqlString ." where t.telefon like :firmaTel ";
+            $sqlString = $sqlString ." where CAST(t.telefon AS BINARY) like :firmaTel ";
+//            $sqlString = $sqlString ." ORDER BY key COLLATE utf8_general_ci ";            
+            $sqlString = $sqlString ." Limit :min,:max ";            
             
             $min = $pmin;
             $max = $pmax;
@@ -81,10 +87,13 @@ class firmaVTK
             $sql = $pdo->prepare($sqlString);
             
             $tempFirmaAdi = '%' . $pfirmaAdi . '%';
+            $tempTelefon = '%' . $ptelefon . '%';
+            
             
             $sql->bindParam(':min', $min ,PDO::PARAM_INT );
             $sql->bindParam(':max', $max ,PDO::PARAM_INT );
             $sql->bindParam(':firmaAdi', $tempFirmaAdi , PDO::PARAM_STR);
+            $sql->bindParam(':firmaTel', $tempTelefon , PDO::PARAM_STR);
             
             $sql->execute();
             $result = $sql->fetchAll();
@@ -98,7 +107,9 @@ class firmaVTK
         catch (PDOException $e) {
             $warningInfo->setWarningId(1);
             $warningInfo->setWarningTnm($e->getMessage());
-            return $warningInfo;
+            $sonuc[] = $warningInfo;
+            hata_yaz($e->getCode(),$e->getMessage(),__FILE__ . "->" .__FUNCTION__,replace_enter_space($sqlString));
+            return $sonuc;
         }
     }
     
