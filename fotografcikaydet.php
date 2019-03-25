@@ -6,6 +6,8 @@
         <?php
         require_once ('userDahilDosyalar.html');
         ?>
+        <script type="text/javascript"
+	src="./js/app/components/controller/fotografciKaydetController.js"></script>
     </head>
 <!-- End Head -->
 <!-- Body -->
@@ -15,16 +17,18 @@
 		<main-nav-bar color-class="g-color--dark"></main-nav-bar>
 	</header>
 	<!--========== END HEADER ==========-->
-	<div class="g-position--relative g-bg-color--white">
+	<div class="g-position--relative g-bg-color--white" data-ng-controller="fotografciKaydetCtrl">
 		<div class="g-container--md g-padding-y-125--xs">
 			<div class="g-text-center--xs g-margin-t-50--xs g-margin-b-80--xs">
-				<h2 class="g-font-size-18--xs g-font-size-24--sm g-color--dark-opacity">Fotoğrafçı
+				<h2
+					class="g-font-size-18--xs g-font-size-24--sm g-color--dark-opacity">Fotoğrafçı
 					Kaydet</h2>
 			</div>
-			<form class="center-block g-width-500--sm g-width-550--md">
+			<form class="center-block g-width-500--sm g-width-550--md" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
 				<div class="g-margin-b-30--xs">
 					<input type="text" class="form-control s-form-v4__input"
-						id="firmaAdi" name="firmaAdi" placeholder="* Fotoğrafçı Adı">
+						id="firmaAdi" name="firmaAdi" placeholder="* Fotoğrafçı Adı" ng-model="user.firmaAdi" required>
+						<p ng-show="userForm.firmaAdi.$invalid && !userForm.firmaAdi.$pristine" class="help-block">Lütfen Firma adı alanını giriniz.</p>
 				</div>
 				<!-- tek kolon -->
 				<div class="g-margin-b-30--xs">
@@ -45,6 +49,12 @@
 							placeholder="* Kontak Kişi Soyad">
 					</div>
 				</div>
+
+				<div class="g-text-center--xs ">
+					<button type="submit" data-ng-click="fotografciEkle();"
+						class="text-uppercase s-btn s-btn--md s-btn--primary-bg g-radius--50 g-padding-x-70--xs g-margin-b-20--xs">Kaydet</button>
+				</div>
+
 				<!-- end çift kolon -->
 			</form>
 
