@@ -28,26 +28,34 @@
 				<div class="g-margin-b-30--xs">
 					<input type="text" class="form-control s-form-v4__input"
 						id="firmaAdi" name="firmaAdi" placeholder="* Fotoğrafçı Adı" ng-model="user.firmaAdi" required>
-						<p ng-show="userForm.firmaAdi.$invalid && !userForm.firmaAdi.$pristine" class="help-block">Lütfen Firma adı alanını giriniz.</p>
+						<p ng-show="userForm.firmaAdi.$touched && userForm.firmaAdi.$invalid" class="help-block">Lütfen Firma adı alanını giriniz.</p>
 				</div>
 				<!-- tek kolon -->
 				<div class="g-margin-b-30--xs">
 					<input type="text" class="form-control s-form-v4__input"
-						id="telefon" name="telefon" placeholder="* Telefon">
+						id="telefon" name="telefon" ng-model="user.telefon" placeholder="(___)___-____" required  ui-mask="(999)999-9999" >
+				    <p ng-show="userForm.telefon.$touched && userForm.telefon.$invalid" class="help-block">Lütfen telefon alanını doldurunuz.</p>
 				</div>
 				<!-- end tek kolon -->
 				<!-- çift kolon -->
 				<div class="row g-row-col-5 g-margin-b-50--xs">
 					<div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
-						<input type="email" class="form-control s-form-v4__input"
-							id="kontakKisiAd" name="kontakKisiAd"
-							placeholder="* Kontak Kişi Ad">
+						<input type="text" class="form-control s-form-v4__input"
+							id="kisiad" name="kisiad" ng-model="user.kisiad" 
+							placeholder="* Kişi Ad" required>
+							<p ng-show="userForm.kisiad.$touched && userForm.kisiad.$invalid" class="help-block">Lütfen kişi ad alanını doldurunuz.</p>
 					</div>
 					<div class="col-sm-6">
 						<input type="text" class="form-control s-form-v4__input"
-							id="kontakKisiSoyad" name="kontakKisiSoyad"
-							placeholder="* Kontak Kişi Soyad">
+							id="kisisoyad" name="kisisoyad" ng-model="user.kisisoyad"
+							placeholder="* Kişi Soyad" required>
+							<p ng-show="userForm.kisisoyad.$touched && userForm.kisisoyad.$invalid" class="help-block">Lütfen kişi soyad alanını doldurunuz.</p>
 					</div>
+				</div>
+				<div class="g-margin-b-30--xs">
+					<input type="email" class="form-control s-form-v4__input"
+						id="email" name="email" ng-model="user.email" placeholder="* e-mail" required>
+				    <p ng-show="userForm.email.$touched && userForm.email.$invalid" class="help-block">Lütfen e-mail alanını doldurunuz.</p>
 				</div>
 
 				<div class="g-text-center--xs ">
