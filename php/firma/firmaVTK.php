@@ -170,41 +170,53 @@ class firmaVTK
             $tempFirmaIletisim = new firmaIletisimVTK();
             $pdo->commit();
             // adres
-            $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 1, $pIl, $pIlce,$pAdres, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-            if ($warningInfo->getWarningId() != 0) {
-                $pdo->rollBack();
-                return $warningInfo;
+            if((isset($pIl) && isset($pIlce)) || isset($pAdres)){
+                $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 1, $pIl, $pIlce,$pAdres, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                if ($warningInfo->getWarningId() != 0) {
+                    $pdo->rollBack();
+                    return $warningInfo;
+                }
             }
              
             // telefon
-            $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 2, $pTelefon, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-            if ($warningInfo->getWarningId() != 0) {
-                $pdo->rollBack();
-                return $warningInfo;
+            if(isset($pTelefon)){
+                $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 2, $pTelefon, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                if ($warningInfo->getWarningId() != 0) {
+                    $pdo->rollBack();
+                    return $warningInfo;
+                }
             }
             // cep telefonu
-            $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 3, $pCepTelefonu, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-            if ($warningInfo->getWarningId() != 0) {
-                $pdo->rollBack();
-                return $warningInfo;
+            if(isset($pCepTelefonu)){
+                $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 3, $pCepTelefonu, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                if ($warningInfo->getWarningId() != 0) {
+                    $pdo->rollBack();
+                    return $warningInfo;
+                }
             }
             // email
-            $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 4, $pEmail, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-            if ($warningInfo->getWarningId() != 0) {
-                $pdo->rollBack();
-                return $warningInfo;
+            if(isset($pEmail)){
+                $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 4, $pEmail, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                if ($warningInfo->getWarningId() != 0) {
+                    $pdo->rollBack();
+                    return $warningInfo;
+                }
             }
             // kontak kisi
-            $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 5, $pKontakKisi, $pKontakKisiTelefon, $pKontakKisiEmail, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-            if ($warningInfo->getWarningId() != 0) {
-                $pdo->rollBack();
-                return $warningInfo;
+            if(isset($pKontakKisi) && (isset($pKontakKisiTelefon) || isset($pKontakKisiEmail))){
+                $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 5, $pKontakKisi, $pKontakKisiTelefon, $pKontakKisiEmail, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                if ($warningInfo->getWarningId() != 0) {
+                    $pdo->rollBack();
+                    return $warningInfo;
+                }
             }
             // web adresi
-            $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 15, $pWebAdresi, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-            if ($warningInfo->getWarningId() != 0) {
-                $pdo->rollBack();
-                return $warningInfo;
+            if(isset($pWebAdresi)){
+                $warningInfo = $tempFirmaIletisim->ekle($tempFirmaId, 15, $pWebAdresi, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                if ($warningInfo->getWarningId() != 0) {
+                    $pdo->rollBack();
+                    return $warningInfo;
+                }
             }
             
             return NULL;
