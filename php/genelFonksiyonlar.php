@@ -1,4 +1,6 @@
 <?php
+require_once ('/sabit/sabitVTK.php');
+
 function get_client_ip_env()
 {
     $ipaddress = '';
@@ -48,9 +50,11 @@ function recaptchaKontrol(){
     
     $response = $_POST["g-recaptcha-response"];
     
+    $recaptchaKey = $tempSabitVTK->getSabit("RECAPTCHA");
+    
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $data = array(
-        'secret' => '6LcATm0UAAAAAM1ruyJYkl5gc8uhBDXpM29miflc',
+        'secret' => $recaptchaKey,
         'response' => $response
     );
     $options = array(

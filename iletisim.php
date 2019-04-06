@@ -37,8 +37,8 @@
                         </div>
                     </div>          
                 </div>
-                <form class="center-block g-width-500--sm g-width-550--md" id="theForm">
-                	<input type="hidden" id="pGetId" name="pGetId" value="1501"> 
+                <form class="center-block g-width-500--sm g-width-550--md" id="theForm" name="theForm" novalidate>
+                	<input type="hidden" id="pGetId" name="pGetId" value="1501" > 
                     <div class="g-margin-b-30--xs">
         				<select data-ng-model="iletisimKonu" class="form-control s-form-v4__input"
         					name="iletisimKonu" id="iletisimKonu">
@@ -47,14 +47,18 @@
         				</select>
     				</div>
                     <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v4__input" placeholder="* Ad Soyad" name="adSoyad" id="adSoyad">
+                        <input type="text" class="form-control s-form-v4__input" ng-model="iletisim.adsoyad" placeholder="* Ad Soyad" name="adSoyad" id="adSoyad" required>
+                        <p ng-show="theForm.adSoyad.$touched && theForm.adSoyad.$invalid" class="help-block">Lütfen ad soyad alanını giriniz.</p>
                     </div>
                     <div class="row g-row-col-5 g-margin-b-50--xs">
                         <div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
-                            <input type="email" class="form-control s-form-v4__input" placeholder="e-Posta" name="ePosta" id="ePosta">
+                            <input type="email" class="form-control s-form-v4__input" ng-model="iletisim.eposta" placeholder="e-Posta" name="ePosta" id="ePosta" required>
+                            <p ng-show="theForm.ePosta.$touched && theForm.ePosta.$invalid" class="help-block">Lütfen e-posta alanını giriniz.</p>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control s-form-v4__input" placeholder="Telefon" name="telefon" id="telefon">
+                            <input type="text" class="form-control s-form-v4__input" name="telefon" 
+                            	ng-model="iletisim.telefon" id="telefon" placeholder="(___)___-____" ui-mask="(999)999-9999" required>
+                            	<p ng-show="theForm.telefon.$touched && theForm.telefon.$invalid" class="help-block">Lütfen telefon alanını giriniz.</p>
                         </div>
                     </div>
                     <div class="g-margin-b-80--xs">

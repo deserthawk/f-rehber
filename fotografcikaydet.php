@@ -74,17 +74,21 @@
 				<div class="row g-row-col-5 g-margin-b-50--xs">
 					<div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
 						<select ng-model="user.il" class="form-control s-form-v4__input"
-							name="il" id="il" ng-change="ilceGetir(user.il);">
-							<option value="">İl Seçiniz</option>
+							name="il" id="il" ng-change="ilceGetir(user.il);" required>
+							<option value="">* İl Seçiniz</option>
 							<option ng-repeat="iller in ilList" value="{{iller.ID}}">{{iller.DEGER}}</option>
 						</select>
+						<p ng-show="userForm.il.$touched && userForm.il.$invalid"
+						class="help-block">Lütfen il seçiniz.</p>
 					</div>
 					<div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
 						<select ng-model="user.ilce" class="form-control s-form-v4__input"
-							name="ilce" id="ilce">
-							<option value="">İlce Seçiniz</option>
+							name="ilce" id="ilce" required>
+							<option value="">* İlce Seçiniz</option>
 							<option ng-repeat="ilceler in ilceList" value="{{ilceler.ID}}">{{ilceler.DEGER}}</option>
 						</select>
+						<p ng-show="userForm.ilce.$touched && userForm.ilce.$invalid"
+						class="help-block">Lütfen ilçe seçiniz.</p>
 					</div>
 				</div>
 				<div class="g-recaptcha g-margin-b-80--xs" data-sitekey="6LcATm0UAAAAAL0zyJpU92NsIbJzPoSSuRkQrxvS"></div>
