@@ -100,10 +100,8 @@ require_once ('userDahilDosyalar.html');
 		}
 		?>	
 			
-			</div>
+			</div>			
 		</div>
-
-		
 	</div>
 <div id="returnData"></div>
 </body>

@@ -6,7 +6,11 @@ require_once ('../warning.php');
 
 class sabitVTK
 {
-    
+    /**
+     * Array bir deger donuyor donus icin donendeger[0] olarak ulasilabilinir.
+     * @param sabit tablosundaki sabit kodu $pSabitKodu
+     * @return warninginfo->Bir hata ile karşılaşıldı. |Warning
+     */
     function getSabit($pSabitKodu){
         
         $warningInfo = new Warning();

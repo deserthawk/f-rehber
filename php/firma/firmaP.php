@@ -1,6 +1,6 @@
 <?php 
 require_once ('../genelPostKontrol.php');
-require_once ('../genelFonksiyonlar.php');
+require_once ('../recaptcha.php');
 require_once ('firmaVTK.php');
 require_once ('firmaModel.php');
 require_once ('../warning.php');
