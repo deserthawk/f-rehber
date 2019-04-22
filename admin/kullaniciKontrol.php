@@ -1,5 +1,4 @@
 <?php 
-require_once ('../php/genelFonksiyonlar.php');
 require_once ('../php/vTabani/veriTabani.php');
 session_start();
 if(isset($_SESSION["adminKullanici"])){
